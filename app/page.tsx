@@ -1,67 +1,65 @@
 import type { Metadata } from 'next';
-import { LandingNavbar } from '@/components/landing/Navbar';
-import { LandingHero } from '@/components/landing/HeroSection';
-import { LandingLogoTicker } from '@/components/landing/LogoTicker';
-import { LandingShowcase } from '@/components/landing/InteractiveShowcase';
-import { LandingFeatures } from '@/components/landing/BentoFeatures';
-import { LandingAgentRoster } from '@/components/landing/AgentRoster';
-import { LandingDualPortals } from '@/components/landing/DualPortals';
-import { LandingRoiCalculator } from '@/components/landing/InteractiveRoiCalculator';
-import { LandingTestimonials } from '@/components/landing/Testimonials';
-import { LandingPricing } from '@/components/landing/PricingSection';
-import { LandingFaq } from '@/components/landing/FaqSection';
-import { LandingCtaBanner } from '@/components/landing/CtaBanner';
-import { LandingFooter } from '@/components/landing/Footer';
+import { FloatingNavbar } from '@/components/landing/FloatingNavbar';
+import { HeroSection } from '@/components/landing/HeroSection';
+import { TrustStrip } from '@/components/landing/TrustStrip';
+import { StatsRow } from '@/components/landing/StatsRow';
+import { BentoFeatures } from '@/components/landing/BentoFeatures';
+import { ShowcaseSection } from '@/components/landing/ShowcaseSection';
+import { HowItWorksSteps } from '@/components/landing/HowItWorksSteps';
+import { TestimonialsMarquee } from '@/components/landing/TestimonialsMarquee';
+import { FaqAccordion } from '@/components/landing/FaqAccordion';
+import { FinalCta } from '@/components/landing/FinalCta';
+import { Footer } from '@/components/landing/Footer';
+import { landingData } from '@/components/landing/landingData';
 
 export const metadata: Metadata = {
-  title: 'FixFlow AI — Autonomous Property Management & AI Voice Dispatch',
-  description: 'Automate 2 AM tenant repair emergencies, lease renewal negotiations, rent collections, and contractor dispatching with 24/7 conversational voice agents.',
+  title: landingData.meta.title,
+  description: landingData.meta.description,
+  openGraph: {
+    title: landingData.meta.title,
+    description: landingData.meta.description,
+    type: 'website',
+  },
 };
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-600 selection:text-white font-sans antialiased overflow-x-hidden">
-      {/* Fixed/Sticky Top Navigation */}
-      <LandingNavbar />
+    <div className="min-h-screen bg-[#070709] text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200 font-sans antialiased overflow-x-hidden bg-grain relative">
+      {/* 1. Floating Pill Navbar */}
+      <FloatingNavbar />
 
-      {/* Main Content */}
+      {/* Main Content Layout */}
       <main>
-        {/* Hero Section */}
-        <LandingHero />
+        {/* 2. Hero Section with 3D perspective mockup */}
+        <HeroSection />
 
-        {/* Enterprise Brand Trust Bar */}
-        <LandingLogoTicker />
+        {/* 3. Trust Strip Marquee with faded edges */}
+        <TrustStrip />
 
-        {/* Interactive Showcase & Real-Time Voice/Dashboard Simulator */}
-        <LandingShowcase />
+        {/* 4. Stats Row with animated count-up numbers */}
+        <StatsRow />
 
-        {/* Bento Grid Features */}
-        <LandingFeatures />
+        {/* 5. Bento Grid Features with cursor glow */}
+        <BentoFeatures />
 
-        {/* Autonomous AI Agents Roster */}
-        <LandingAgentRoster />
+        {/* 6. Showcase / Work with sliding arrow hover */}
+        <ShowcaseSection />
 
-        {/* Dual Portal Architecture (Executive vs Tenant) */}
-        <LandingDualPortals />
+        {/* 7. How It Works with numbered connected steps */}
+        <HowItWorksSteps />
 
-        {/* Dynamic ROI & Cost Reduction Calculator */}
-        <LandingRoiCalculator />
+        {/* 8. Testimonials Marquee */}
+        <TestimonialsMarquee />
 
-        {/* Real Customer Testimonials */}
-        <LandingTestimonials />
+        {/* 9. Accessible FAQ Accordion */}
+        <FaqAccordion />
 
-        {/* Pricing Tiers with Annual Toggle */}
-        <LandingPricing />
-
-        {/* Frequently Asked Questions */}
-        <LandingFaq />
-
-        {/* Pre-Footer Action Banner */}
-        <LandingCtaBanner />
+        {/* 10. Final CTA Full-Width Block */}
+        <FinalCta />
       </main>
 
-      {/* Footer */}
-      <LandingFooter />
+      {/* 11. Footer with big wordmark and status indicator */}
+      <Footer />
     </div>
   );
 }

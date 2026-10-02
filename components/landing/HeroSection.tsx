@@ -2,142 +2,224 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { landingData } from './landingData';
 import { 
-  Sparkles, 
   ArrowRight, 
   PhoneCall, 
   ShieldCheck, 
-  Clock, 
-  TrendingUp, 
   CheckCircle2, 
-  Wrench, 
-  Play,
-  Zap,
-  Building,
-  Star
+  Volume2
 } from 'lucide-react';
 
-export function LandingHero() {
+export function HeroSection() {
+  const { hero } = landingData;
+
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-white">
-      {/* Background Ambient Lighting & Grid Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[650px] pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-gradient-to-tr from-blue-100/70 via-indigo-100/50 to-sky-100/40 blur-[120px] rounded-full" />
-        <div className="absolute top-60 left-1/4 w-[350px] h-[250px] bg-cyan-100/50 blur-[100px] rounded-full" />
-        <div className="absolute top-40 right-1/4 w-[350px] h-[250px] bg-blue-100/50 blur-[100px] rounded-full" />
-        {/* Subtle grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.4]"
-          style={{
-            backgroundImage: `radial-gradient(#CBD5E1 1px, transparent 1px)`,
-            backgroundSize: '24px 24px'
-          }}
-        />
-      </div>
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      {/* Radial Glow Lighting behind hero */}
+      <div 
+        aria-hidden="true" 
+        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[850px] h-[550px] bg-gradient-to-b from-indigo-500/20 via-indigo-600/10 to-transparent blur-[140px] rounded-full -z-10" 
+      />
+      <div 
+        aria-hidden="true" 
+        className="pointer-events-none absolute top-48 left-1/4 w-[350px] h-[300px] bg-cyan-500/10 blur-[120px] rounded-full -z-10" 
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Top Eyebrow Tag */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200/90 text-slate-700 text-xs sm:text-sm font-medium mb-8 shadow-xs hover:border-slate-300 transition-colors">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-blue-600 font-semibold">Autonomous Proptech 2.4</span>
-            <span className="text-slate-300">•</span>
-            <span className="text-slate-600">Zero-Touch Maintenance & AI Voice Dispatch</span>
-            <Sparkles className="w-3.5 h-3.5 text-blue-600 ml-0.5" />
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top Eyebrow / Status Badge */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md shadow-inner text-xs font-mono text-slate-300 hover:border-indigo-400/30 transition-colors">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            </span>
+            <span className="tracking-wide text-slate-200">{hero.statusBadge}</span>
+            <span className="text-white/20">•</span>
+            <span className="text-indigo-300 font-sans font-semibold">Sub-30s Dispatch</span>
           </div>
+        </div>
 
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-            The Autonomous OS for{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500">
-              Modern Property Portfolios
+        {/* Main Editorial Headline */}
+        <div className="text-center max-w-5xl mx-auto">
+          <h1 className="text-[clamp(2.25rem,5.6vw,4.5rem)] font-bold tracking-[-0.035em] leading-[1.08] text-white">
+            <span className="block sm:whitespace-nowrap">{hero.titleLine1}</span>
+            <span className="block mt-1 sm:mt-2">
+              runs{' '}
+              <span className="font-serif-italic font-normal text-indigo-300 bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 via-indigo-300 to-indigo-100 pr-1">
+                {hero.highlightWord}
+              </span>{' '}
+              <span className="text-slate-400">{hero.titleLine2}</span>
             </span>
           </h1>
 
           {/* Subheading */}
-          <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Turn late-night 2 AM plumbing emergencies, lease renewals, tenant rent follow-ups, 
-            and technician work orders into effortless, autonomous workflows with 
-            conversational AI voice agents and self-service diagnostics.
+          <p className="mt-7 text-base sm:text-xl text-slate-300/90 leading-relaxed font-normal max-w-2xl mx-auto">
+            {hero.description}
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md sm:max-w-none mx-auto">
+          <div className="mt-9 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
             <Link
-              href="/dashboard"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-base shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
+              href={hero.primaryCta.href}
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 group border border-indigo-400/30"
             >
-              <span>Explore Live Dashboard</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span>{hero.primaryCta.label}</span>
+              <ArrowRight className="w-4 h-4 text-indigo-200 group-hover:translate-x-0.5 transition-transform" />
             </Link>
 
             <Link
-              href="/tenant/repair"
-              className="w-full sm:w-auto px-7 py-4 rounded-xl bg-white hover:bg-slate-50 text-slate-800 hover:text-slate-900 font-semibold text-base border border-slate-200 hover:border-slate-300 transition-all flex items-center justify-center gap-2.5 shadow-sm"
+              href={hero.secondaryCta.href}
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white font-medium text-sm border border-white/[0.1] hover:border-white/[0.2] backdrop-blur-sm transition-all duration-200 flex items-center justify-center gap-2"
             >
-              <Wrench className="w-4 h-4 text-indigo-600" />
-              <span>Try Tenant Repair Portal</span>
+              <PhoneCall className="w-4 h-4 text-indigo-400" />
+              <span>{hero.secondaryCta.label}</span>
             </Link>
-
-            <a
-              href="#showcase"
-              className="w-full sm:w-auto px-6 py-4 rounded-xl text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors flex items-center justify-center gap-2 hover:bg-slate-100"
-            >
-              <Play className="w-3.5 h-3.5 text-blue-600 fill-blue-600/20" />
-              <span>Watch Interactive Demo</span>
-            </a>
           </div>
 
-          {/* Trust Guarantees */}
-          <div className="mt-5 flex items-center justify-center gap-4 text-xs text-slate-500 flex-wrap">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-              Live interactive system
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-              No credit card required
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-              Instant browser access
-            </span>
+          {/* Micro Trust Proof */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-400">
+            {hero.microTrust.map((item, index) => (
+              <div key={index} className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Social Proof / Stats Strip */}
-          <div className="mt-14 pt-10 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center p-4 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-blue-200 transition-all">
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 flex items-center gap-1">
-                <span>&lt; 1.2s</span>
-                <Zap className="w-4 h-4 text-amber-500" />
-              </div>
-              <span className="text-xs text-slate-500 mt-1 font-medium">AI Call Response Time</span>
-            </div>
+        {/* Visual Mockup Frame with Subtle 3D Perspective Tilt */}
+        <div className="mt-14 sm:mt-20 [perspective:1400px]">
+          <div className="relative rounded-2xl md:rounded-3xl p-1 bg-gradient-to-b from-white/[0.14] via-white/[0.04] to-transparent shadow-2xl shadow-indigo-950/40 transition-transform duration-500 hover:[transform:rotateX(0deg)] [transform:rotateX(3.5deg)]">
+            {/* Glow Aura */}
+            <div 
+              aria-hidden="true" 
+              className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/20 via-cyan-500/10 to-indigo-500/20 rounded-2xl md:rounded-3xl blur-xl opacity-60 -z-10" 
+            />
 
-            <div className="flex flex-col items-center p-4 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-emerald-200 transition-all">
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 flex items-center gap-1">
-                <span>64%</span>
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              </div>
-              <span className="text-xs text-slate-500 mt-1 font-medium">False Dispatches Saved</span>
-            </div>
+            {/* Inner Dashboard Frame */}
+            <div className="bg-[#0B0C10] rounded-[14px] md:rounded-[22px] border border-white/[0.08] overflow-hidden">
+              {/* Window Header */}
+              <div className="px-4 py-3 bg-[#08090C] border-b border-white/[0.06] flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                  <span className="ml-3 text-[11px] font-mono text-slate-400 hidden sm:inline">
+                    fixflow-telephony-node-us-east // live-dispatch
+                  </span>
+                </div>
 
-            <div className="flex flex-col items-center p-4 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-blue-200 transition-all">
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 flex items-center gap-1">
-                <span>15,000+</span>
-                <Building className="w-4 h-4 text-blue-600" />
+                <div className="flex items-center gap-3">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    AGENT ACTIVE
+                  </div>
+                  <span className="text-[11px] text-slate-500 font-mono">92ms latency</span>
+                </div>
               </div>
-              <span className="text-xs text-slate-500 mt-1 font-medium">Units Managed Autonomously</span>
-            </div>
 
-            <div className="flex flex-col items-center p-4 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-amber-200 transition-all">
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 flex items-center gap-1">
-                <span>4.9 / 5</span>
-                <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+              {/* Mockup Content Grid */}
+              <div className="p-4 sm:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gradient-to-b from-[#0E1017] to-[#08090D]">
+                {/* Left Column: Live Call Audio & Turn-by-Turn Transcript (7 cols) */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                          <Volume2 className="w-4 h-4 animate-pulse" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold text-white">Inbound Emergency Call: Unit 408</p>
+                          <p className="text-[11px] text-slate-400 font-mono">Resident: Marcus Green • Highland Park Tower</p>
+                        </div>
+                      </div>
+                      <span className="text-xs font-mono text-indigo-300 px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20">
+                        01:42
+                      </span>
+                    </div>
+
+                    {/* Simulated Voice Waveform */}
+                    <div className="h-8 bg-black/40 rounded-lg p-2 flex items-center justify-between gap-1 overflow-hidden border border-white/[0.04]">
+                      {[40, 70, 30, 85, 95, 60, 45, 90, 100, 75, 40, 60, 80, 50, 30, 90, 85, 45, 65, 90, 100, 70, 35, 50, 80, 65].map((h, i) => (
+                        <span
+                          key={i}
+                          className="w-1 bg-gradient-to-t from-indigo-500 to-cyan-300 rounded-full transition-all duration-300"
+                          style={{ height: `${h}%`, opacity: (i % 2 === 0 ? 0.9 : 0.6) }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Transcript Bubbles */}
+                  <div className="space-y-2.5 text-xs">
+                    <div className="p-3 rounded-lg bg-white/[0.03] border border-white/[0.05] flex gap-3">
+                      <div className="text-[10px] font-mono uppercase text-slate-400 font-bold shrink-0 mt-0.5">
+                        Resident
+                      </div>
+                      <p className="text-slate-300">
+                        &quot;Water is rushing out under the kitchen sink and flooding onto the wood floor!&quot;
+                      </p>
+                    </div>
+
+                    <div className="p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex gap-3">
+                      <div className="text-[10px] font-mono uppercase text-indigo-300 font-bold shrink-0 mt-0.5">
+                        AI Agent
+                      </div>
+                      <p className="text-slate-200 leading-relaxed">
+                        &quot;Marcus, look directly under the sink for the silver oval valve and turn it clockwise right now. I have already paged Apex Emergency Plumbing and sent your digital gate pass.&quot;
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Automated Dispatch & SLA Verification (5 cols) */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-3.5">
+                    <div className="flex items-center justify-between border-b border-white/[0.06] pb-2.5">
+                      <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                        Autonomous Action
+                      </span>
+                      <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3" /> SLA Rule #4 Executed
+                      </span>
+                    </div>
+
+                    <div className="space-y-2 text-xs">
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="text-slate-400">Assigned Vendor</span>
+                        <span className="font-semibold text-white">Apex Plumbing 24/7</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="text-slate-400">Insurance & COI</span>
+                        <span className="text-emerald-400 font-mono text-[11px]">Active ($2M Policy)</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="text-slate-400">Arrival ETA</span>
+                        <span className="font-mono text-indigo-300 font-bold">19 Mins (On Route)</span>
+                      </div>
+                      <div className="flex items-center justify-between text-slate-300">
+                        <span className="text-slate-400">Expense Cap</span>
+                        <span className="font-mono text-slate-200">$350 Pre-authorized</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px]">
+                      <span className="text-slate-400 font-mono">Manager Escalation:</span>
+                      <span className="text-slate-300 font-mono">Not Required (Resolved)</span>
+                    </div>
+                  </div>
+
+                  {/* Portfolio Health Metric Chip */}
+                  <div className="p-3.5 rounded-xl bg-gradient-to-r from-indigo-500/10 to-transparent border border-indigo-500/20 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-indigo-400" />
+                      <span className="text-xs font-medium text-slate-200">Executive NOI Protected</span>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-indigo-300">+$2,100 saved</span>
+                  </div>
+                </div>
               </div>
-              <span className="text-xs text-slate-500 mt-1 font-medium">Resident CSAT Rating</span>
             </div>
           </div>
         </div>

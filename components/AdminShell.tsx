@@ -17,7 +17,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   // Admin Dashboard layout
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-[#F4F6FA] text-[#1E293B]">
       {/* Fixed Left Sidebar */}
       <Sidebar />
 

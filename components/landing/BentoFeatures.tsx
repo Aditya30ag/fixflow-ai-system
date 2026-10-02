@@ -1,252 +1,171 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import { landingData, BentoFeature } from './landingData';
 import { 
-  PhoneCall, 
-  Wrench, 
-  FileText, 
-  CreditCard, 
-  Users2, 
-  BarChart3, 
-  Sparkles, 
-  ArrowRight, 
-  CheckCircle2, 
   ShieldCheck, 
-  Zap, 
-  Bot,
-  Clock,
-  Layers
+  CheckCircle2, 
+  Volume2,
+  Wrench
 } from 'lucide-react';
 
-export function LandingFeatures() {
+interface GlowCardProps {
+  feature: BentoFeature;
+}
+
+function BentoCard({ feature }: GlowCardProps) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <section id="features" className="py-20 lg:py-28 bg-white text-slate-900 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-3">
-            <Layers className="w-3.5 h-3.5 text-blue-600" />
-            <span>Complete Proptech Operating System</span>
+    <div
+      onMouseMove={handleMouseMove}
+      className={`relative rounded-2xl md:rounded-3xl p-6 sm:p-8 bg-[#0C0D12] border border-white/[0.08] hover:border-white/[0.18] transition-all duration-300 overflow-hidden flex flex-col justify-between group ${feature.colSpan}`}
+    >
+      {/* Dynamic Cursor-Following Glow */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
+        style={{
+          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.16), transparent 70%)`,
+        }}
+      />
+
+      {/* Top Header Row */}
+      <div>
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <span className="text-[11px] font-mono-tag uppercase text-indigo-400 font-semibold tracking-wider">
+            {feature.tag}
+          </span>
+          {feature.badge && (
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">
+              {feature.badge}
+            </span>
+          )}
+        </div>
+
+        <h3 className="font-display font-bold text-xl sm:text-2xl text-white tracking-tight leading-snug group-hover:text-indigo-100 transition-colors">
+          {feature.title}
+        </h3>
+
+        <p className="mt-3 text-sm text-slate-400 leading-relaxed font-normal">
+          {feature.description}
+        </p>
+      </div>
+
+      {/* Interactive Micro-Visual Preview per Feature Type */}
+      <div className="mt-8 pt-6 border-t border-white/[0.06]">
+        {feature.previewType === 'voice' && (
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-3">
+            <div className="flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2 text-slate-300">
+                <Volume2 className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+                <span className="font-mono text-[11px]">Cartesia Neural Telephony</span>
+              </div>
+              <span className="text-[11px] font-mono text-emerald-400">Streaming: 88ms latency</span>
+            </div>
+            {/* Audio visualization bars */}
+            <div className="flex items-center gap-1.5 h-6">
+              {[60, 95, 45, 80, 100, 70, 30, 85, 90, 60, 40, 75, 90, 50, 65, 80, 100, 85, 40, 70].map((h, i) => (
+                <div
+                  key={i}
+                  className="flex-1 bg-indigo-500/40 group-hover:bg-indigo-400 transition-colors rounded-full"
+                  style={{ height: `${h}%` }}
+                />
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-400 font-mono italic">
+              &quot;Isolating master main shutoff valve on Unit 402... Dispatching technician.&quot;
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
-            Engineered to Run Properties on Autopilot
+        )}
+
+        {feature.previewType === 'lease' && (
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-slate-400">Automated Renewal Rate</span>
+              <span className="text-xs font-mono font-bold text-emerald-400">94.2%</span>
+            </div>
+            <div className="w-full bg-white/[0.05] h-1.5 rounded-full overflow-hidden">
+              <div className="bg-gradient-to-r from-indigo-500 to-emerald-400 h-full rounded-full w-[94%]" />
+            </div>
+            <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-1">
+              <span>60 Days Out: Pinged</span>
+              <span className="text-indigo-300">DocuSign Synced</span>
+            </div>
+          </div>
+        )}
+
+        {feature.previewType === 'triage' && (
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-2">
+            <div className="flex items-center gap-2 text-xs text-slate-300">
+              <Wrench className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Tenant Self-Resolution Tree</span>
+            </div>
+            <div className="grid grid-cols-2 gap-1.5 pt-1 text-[11px]">
+              <div className="px-2 py-1 rounded bg-white/[0.04] text-slate-300 flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3 text-emerald-400" /> Breaker Reset
+              </div>
+              <div className="px-2 py-1 rounded bg-white/[0.04] text-slate-300 flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3 text-emerald-400" /> Disposal Key
+              </div>
+            </div>
+          </div>
+        )}
+
+        {feature.previewType === 'metrics' && (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">Vendor COI</span>
+              <p className="font-semibold text-emerald-400 mt-1 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5" /> 100% Verified
+              </p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">SLA Window</span>
+              <p className="font-semibold text-white mt-1 font-mono">&lt; 45 Mins</p>
+            </div>
+            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+              <span className="text-[10px] font-mono text-slate-400 uppercase">Ledger Audit</span>
+              <p className="font-semibold text-indigo-300 mt-1 font-mono">Auto-Reconciled</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function BentoFeatures() {
+  const { bento } = landingData;
+
+  return (
+    <section id="features" className="py-24 md:py-32 relative">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="max-w-2xl mb-16">
+          <p className="text-xs font-mono-tag uppercase text-indigo-400 tracking-[0.2em] mb-3">
+            {bento.sectionTag}
+          </p>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">
+            {bento.heading}
           </h2>
-          <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            Every operational bottleneck — from chaotic after-hours emergency calls to overdue rent collection — 
-            automated with specialized AI agents.
+          <p className="mt-4 text-base text-slate-400 leading-relaxed font-normal">
+            {bento.subheading}
           </p>
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1: 24/7 AI Voice Telephony (Large / Featured) */}
-          <div className="lg:col-span-2 p-8 rounded-2xl bg-gradient-to-br from-blue-50/70 via-indigo-50/40 to-white border border-blue-200/80 hover:border-blue-400 transition-all group relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
-            
-            <div className="flex items-center justify-between mb-6">
-              <div className="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-200 flex items-center justify-center text-blue-600 shadow-xs">
-                <PhoneCall className="w-6 h-6" />
-              </div>
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                &lt; 400ms Neural Latency
-              </span>
-            </div>
-
-            <h3 className="text-2xl font-bold text-slate-900 mb-3">
-              Conversational Voice Telephony & Instant Triage
-            </h3>
-            <p className="text-slate-600 text-sm leading-relaxed mb-6 max-w-xl">
-              Equipped with human-grade speech models (ElevenLabs & Cartesia), our voice agents answer tenant calls 
-              on the first ring. They empathize, diagnose plumbing or heating emergencies, guide basic shutoffs, 
-              and instantly generate audio transcripts and contractor work orders.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-200/80">
-              <div className="flex items-center gap-2 text-xs text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>Zero phone tag or voicemail queues</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>Sentiment & urgency classification</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-slate-700">
-                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
-                <span>Synchronized with PMS work orders</span>
-              </div>
-            </div>
-
-            <div className="mt-6 flex items-center gap-4">
-              <Link 
-                href="/ai-call-logs" 
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 group-hover:translate-x-1 transition-all"
-              >
-                <span>Browse AI Voice Call Logs</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 2: Guided Tenant Self-Fix (Saves Callout Fees) */}
-          <div className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 transition-all group flex flex-col justify-between shadow-sm">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600 shadow-xs">
-                  <Wrench className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  Save $180/call
-                </span>
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Self-Service First Repair Portal
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                Over 60% of common maintenance calls (garbage disposal jam, breaker trip, radiator air lock) 
-                can be solved by tenants within 3 minutes through guided step-by-step diagnostic checklists.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100">
-              <Link
-                href="/tenant/repair"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 group-hover:translate-x-1 transition-all"
-              >
-                <span>Explore Martin & Co Tenant Flow</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 3: Autonomous Lease Renewals */}
-          <div className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-400 transition-all group flex flex-col justify-between shadow-sm">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 shadow-xs">
-                  <FileText className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  +28% Retention
-                </span>
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Predictive Lease Rollover Engine
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                The renewal agent reaches out to residents 60 and 30 days prior to lease expiration with 
-                personalized market-rate offers, dynamic concession levers, and 1-click digital renewals.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100">
-              <Link
-                href="/leases"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-800 group-hover:translate-x-1 transition-all"
-              >
-                <span>View Lease Management</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 4: Frictionless Rent Collection & Reminders */}
-          <div className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-purple-400 transition-all group flex flex-col justify-between shadow-sm">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-center text-purple-600 shadow-xs">
-                  <CreditCard className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
-                  98.6% On-Time
-                </span>
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Automated Rent Ledger & Smart Reminders
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                Polite, automated SMS reminders and voice calls for past-due balances. Includes instant Stripe 
-                and ACH checkout links with immediate payment confirmation receipts.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100">
-              <Link
-                href="/reports"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-600 hover:text-purple-800 group-hover:translate-x-1 transition-all"
-              >
-                <span>Check Revenue Analytics</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 5: Vetted Contractor & Vendor Dispatch */}
-          <div className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-cyan-400 transition-all group flex flex-col justify-between shadow-sm">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600 shadow-xs">
-                  <Users2 className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 border border-cyan-200">
-                  Verified Insured
-                </span>
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Contractor Dispatch & Verification
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                When a technician visit is required, FixFlow automatically verifies contractor general liability insurance, 
-                checks schedule availability, and routes keys via smart lock guest passes.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100">
-              <Link
-                href="/report-issue"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-600 hover:text-cyan-800 group-hover:translate-x-1 transition-all"
-              >
-                <span>Test Issue Dispatch</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 6: Portfolio NOI & Labor Hours Saved */}
-          <div className="p-8 rounded-2xl bg-white border border-slate-200/90 hover:border-amber-400 transition-all group flex flex-col justify-between shadow-sm">
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 shadow-xs">
-                  <BarChart3 className="w-6 h-6" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
-                  Real-Time NOI
-                </span>
-              </div>
-
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                Executive Portfolio Intelligence
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                Gain instant clarity on property revenue yields, staff labor hours saved, 
-                and predictive asset wear. Export clean audit reports for partners and lenders in seconds.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-slate-100">
-              <Link
-                href="/reports"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-600 hover:text-amber-800 group-hover:translate-x-1 transition-all"
-              >
-                <span>View Financial Statements</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {bento.features.map((feature) => (
+            <BentoCard key={feature.id} feature={feature} />
+          ))}
         </div>
       </div>
     </section>
