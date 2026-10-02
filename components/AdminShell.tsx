@@ -8,9 +8,10 @@ import { TopNav } from '@/components/TopNav';
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isTenantPortal = pathname?.startsWith('/tenant');
+  const isLandingPage = pathname === '/';
 
-  // If visiting the tenant-facing portal, do not render admin sidebar or admin topnav
-  if (isTenantPortal) {
+  // If visiting the tenant-facing portal or landing page, do not render admin sidebar or admin topnav
+  if (isTenantPortal || isLandingPage) {
     return <>{children}</>;
   }
 
