@@ -131,11 +131,66 @@
   background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent);
 }
 
+/* Space Starfield & Cosmic Keyframes */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 3px currentColor);
+  }
+}
+
+@keyframes meteor-sweep {
+  0% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(0) translateY(0);
+  }
+  12% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(-450px) translateY(350px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(-450px) translateY(350px);
+  }
+}
+
+@keyframes nebula-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(15px, -20px) scale(1.06);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
+}
+
+.animate-meteor {
+  animation: meteor-sweep 12s linear infinite var(--delay, 0s);
+}
+
+.animate-nebula {
+  animation: nebula-drift 18s ease-in-out infinite alternate;
+}
+
 /* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-marquee-slow,
-  .animate-pulse-slow {
+  .animate-pulse-slow,
+  .animate-twinkle,
+  .animate-meteor,
+  .animate-nebula {
     animation: none !important;
   }
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SpaceStarfield } from '@/components/landing/SpaceStarfield';
 import { FloatingNavbar } from '@/components/landing/FloatingNavbar';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { TrustStrip } from '@/components/landing/TrustStrip';
@@ -25,11 +26,14 @@ export const metadata: Metadata = {
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#070709] text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200 font-sans antialiased overflow-x-hidden bg-grain relative">
+      {/* Background Space Starfield & Celestial Atmosphere (Fixed in viewport at z-0) */}
+      <SpaceStarfield />
+
       {/* 1. Floating Pill Navbar */}
       <FloatingNavbar />
 
-      {/* Main Content Layout */}
-      <main>
+      {/* Main Content Layout with explicit z-10 stacking */}
+      <main className="relative z-10">
         {/* 2. Hero Section with 3D perspective mockup */}
         <HeroSection />
 
@@ -59,7 +63,9 @@ export default function LandingPage() {
       </main>
 
       {/* 11. Footer with big wordmark and status indicator */}
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }
