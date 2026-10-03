@@ -9,18 +9,18 @@ export function Footer() {
   const { footer } = landingData;
 
   return (
-    <footer className="pt-20 pb-12 border-t border-white/[0.06] bg-[#050608] relative overflow-hidden">
+    <footer className="pt-20 pb-12 border-t border-[#23272f] bg-[#121419] relative overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-[#23272f]">
           {/* Brand Info (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-cyan-400 p-[1px]">
-                <div className="w-full h-full rounded-full bg-[#070709] flex items-center justify-center">
-                  <Building2 className="w-4 h-4 text-indigo-300" />
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#bef033] to-[#a8d82a] p-[1px]">
+                <div className="w-full h-full rounded-full bg-[#121419] flex items-center justify-center">
+                  <Building2 className="w-4 h-4 text-[#bdf033]" />
                 </div>
               </div>
-              <span className="font-display font-bold text-lg tracking-tight text-white">
+              <span className="font-display font-bold text-lg tracking-tight text-white group-hover:text-[#bdf033] transition-colors">
                 {footer.wordmark}
               </span>
             </Link>
@@ -55,7 +55,7 @@ export function Footer() {
                         className="text-slate-400 hover:text-white transition-colors duration-150 inline-flex items-center gap-0.5 group"
                       >
                         <span>{link.label}</span>
-                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-indigo-400" />
+                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all text-[#bdf033]" />
                       </Link>
                     </li>
                   ))}

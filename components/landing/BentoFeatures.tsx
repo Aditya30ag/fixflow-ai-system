@@ -27,30 +27,30 @@ function BentoCard({ feature }: GlowCardProps) {
   return (
     <div
       onMouseMove={handleMouseMove}
-      className={`relative rounded-2xl md:rounded-3xl p-6 sm:p-8 bg-[#0C0D12] border border-white/[0.08] hover:border-white/[0.18] transition-all duration-300 overflow-hidden flex flex-col justify-between group ${feature.colSpan}`}
+      className={`relative rounded-2xl md:rounded-3xl p-6 sm:p-8 bg-[#16181d] border border-[#23272f] hover:border-[#bdf033]/30 transition-all duration-300 overflow-hidden flex flex-col justify-between group ${feature.colSpan}`}
     >
       {/* Dynamic Cursor-Following Glow */}
       <div
         className="pointer-events-none absolute -inset-px rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
         style={{
-          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(99, 102, 241, 0.16), transparent 70%)`,
+          background: `radial-gradient(500px circle at ${mousePos.x}px ${mousePos.y}px, rgba(189, 240, 51, 0.12), transparent 70%)`,
         }}
       />
 
       {/* Top Header Row */}
       <div>
         <div className="flex items-center justify-between gap-4 mb-4">
-          <span className="text-[11px] font-mono-tag uppercase text-indigo-400 font-semibold tracking-wider">
+          <span className="text-[11px] font-mono-tag uppercase text-[#bdf033] font-semibold tracking-wider">
             {feature.tag}
           </span>
           {feature.badge && (
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#bdf033]/10 border border-[#bdf033]/25 text-[#bdf033]">
               {feature.badge}
             </span>
           )}
         </div>
 
-        <h3 className="font-display font-bold text-xl sm:text-2xl text-white tracking-tight leading-snug group-hover:text-indigo-100 transition-colors">
+        <h3 className="font-display font-bold text-xl sm:text-2xl text-white tracking-tight leading-snug group-hover:text-white transition-colors">
           {feature.title}
         </h3>
 
@@ -60,12 +60,12 @@ function BentoCard({ feature }: GlowCardProps) {
       </div>
 
       {/* Interactive Micro-Visual Preview per Feature Type */}
-      <div className="mt-8 pt-6 border-t border-white/[0.06]">
+      <div className="mt-8 pt-6 border-t border-[#23272f]">
         {feature.previewType === 'voice' && (
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-3">
+          <div className="p-4 rounded-xl bg-[#121419]/60 border border-[#23272f] space-y-3">
             <div className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-2 text-slate-300">
-                <Volume2 className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+                <Volume2 className="w-3.5 h-3.5 text-[#bdf033] animate-pulse" />
                 <span className="font-mono text-[11px]">Cartesia Neural Telephony</span>
               </div>
               <span className="text-[11px] font-mono text-emerald-400">Streaming: 88ms latency</span>
@@ -75,7 +75,7 @@ function BentoCard({ feature }: GlowCardProps) {
               {[60, 95, 45, 80, 100, 70, 30, 85, 90, 60, 40, 75, 90, 50, 65, 80, 100, 85, 40, 70].map((h, i) => (
                 <div
                   key={i}
-                  className="flex-1 bg-indigo-500/40 group-hover:bg-indigo-400 transition-colors rounded-full"
+                  className="flex-1 bg-[#bdf033]/40 group-hover:bg-[#bdf033] transition-colors rounded-full"
                   style={{ height: `${h}%` }}
                 />
               ))}
@@ -87,25 +87,25 @@ function BentoCard({ feature }: GlowCardProps) {
         )}
 
         {feature.previewType === 'lease' && (
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-2.5">
+          <div className="p-4 rounded-xl bg-[#121419]/60 border border-[#23272f] space-y-2.5">
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-400">Automated Renewal Rate</span>
               <span className="text-xs font-mono font-bold text-emerald-400">94.2%</span>
             </div>
             <div className="w-full bg-white/[0.05] h-1.5 rounded-full overflow-hidden">
-              <div className="bg-gradient-to-r from-indigo-500 to-emerald-400 h-full rounded-full w-[94%]" />
+              <div className="bg-gradient-to-r from-[#bdf033] to-[#a8d82a] h-full rounded-full w-[94%]" />
             </div>
             <div className="flex justify-between text-[11px] font-mono text-slate-400 pt-1">
               <span>60 Days Out: Pinged</span>
-              <span className="text-indigo-300">DocuSign Synced</span>
+              <span className="text-[#bdf033]">DocuSign Synced</span>
             </div>
           </div>
         )}
 
         {feature.previewType === 'triage' && (
-          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-2">
+          <div className="p-4 rounded-xl bg-[#121419]/60 border border-[#23272f] space-y-2">
             <div className="flex items-center gap-2 text-xs text-slate-300">
-              <Wrench className="w-3.5 h-3.5 text-indigo-400" />
+              <Wrench className="w-3.5 h-3.5 text-[#bdf033]" />
               <span>Tenant Self-Resolution Tree</span>
             </div>
             <div className="grid grid-cols-2 gap-1.5 pt-1 text-[11px]">
@@ -121,19 +121,19 @@ function BentoCard({ feature }: GlowCardProps) {
 
         {feature.previewType === 'metrics' && (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+            <div className="p-3 rounded-lg bg-[#121419]/60 border border-[#23272f]">
               <span className="text-[10px] font-mono text-slate-400 uppercase">Vendor COI</span>
               <p className="font-semibold text-emerald-400 mt-1 flex items-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5" /> 100% Verified
               </p>
             </div>
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+            <div className="p-3 rounded-lg bg-[#121419]/60 border border-[#23272f]">
               <span className="text-[10px] font-mono text-slate-400 uppercase">SLA Window</span>
               <p className="font-semibold text-white mt-1 font-mono">&lt; 45 Mins</p>
             </div>
-            <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05]">
+            <div className="p-3 rounded-lg bg-[#121419]/60 border border-[#23272f]">
               <span className="text-[10px] font-mono text-slate-400 uppercase">Ledger Audit</span>
-              <p className="font-semibold text-indigo-300 mt-1 font-mono">Auto-Reconciled</p>
+              <p className="font-semibold text-[#bdf033] mt-1 font-mono">Auto-Reconciled</p>
             </div>
           </div>
         )}
@@ -150,7 +150,7 @@ export function BentoFeatures() {
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mb-16">
-          <p className="text-xs font-mono-tag uppercase text-indigo-400 tracking-[0.2em] mb-3">
+          <p className="text-xs font-mono-tag uppercase text-[#bdf033] tracking-[0.2em] mb-3">
             {bento.sectionTag}
           </p>
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-tight">

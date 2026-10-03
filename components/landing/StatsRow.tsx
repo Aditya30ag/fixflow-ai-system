@@ -33,20 +33,20 @@ export function StatsRow() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="relative p-6 sm:p-7 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.16] hover:bg-white/[0.035] transition-all duration-300 group"
+              className="relative p-6 sm:p-7 rounded-2xl bg-[#16181d] border border-[#23272f] hover:border-[#bdf033]/30 hover:bg-[#1c2029] transition-all duration-300 group"
             >
               {/* Subtle top indicator bar */}
-              <div className="w-8 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent mb-5 group-hover:w-16 transition-all duration-300" />
+              <div className="w-8 h-[2px] bg-gradient-to-r from-[#bdf033] to-transparent mb-5 group-hover:w-16 transition-all duration-300" />
 
               {/* Number display */}
               <div className="flex items-baseline gap-1 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white">
-                <span className="text-indigo-400 group-hover:text-indigo-300 transition-colors">
+                <span className="text-[#bdf033] group-hover:text-[#d4f968] transition-colors">
                   {stat.prefix}
                 </span>
                 <span>
                   {hasAnimated ? stat.numeric : Math.floor(stat.numeric * 0.7)}
                 </span>
-                <span className="text-indigo-400 text-2xl sm:text-3xl font-light">
+                <span className="text-[#bdf033] text-2xl sm:text-3xl font-light">
                   {stat.suffix}
                 </span>
               </div>

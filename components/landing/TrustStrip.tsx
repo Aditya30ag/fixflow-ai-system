@@ -9,19 +9,19 @@ export function TrustStrip() {
   const marqueeItems = [...trustStrip.partners, ...trustStrip.partners];
 
   return (
-    <section className="relative py-12 border-y border-white/[0.06] bg-[#070709]/60 overflow-hidden">
+    <section className="relative py-12 border-y border-[#23272f] bg-[#121419]/60 overflow-hidden">
       {/* Side Fade Masks */}
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-36 bg-gradient-to-r from-[#070709] to-transparent z-10" 
+        className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-36 bg-gradient-to-r from-[#121419] to-transparent z-10" 
       />
       <div 
         aria-hidden="true" 
-        className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-36 bg-gradient-to-l from-[#070709] to-transparent z-10" 
+        className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-36 bg-gradient-to-l from-[#121419] to-transparent z-10" 
       />
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 mb-6 text-center">
-        <p className="text-[11px] font-mono-tag uppercase text-slate-500 tracking-[0.2em]">
+        <p className="text-[11px] font-mono-tag uppercase text-slate-400 tracking-[0.2em]">
           {trustStrip.eyebrow}
         </p>
       </div>
@@ -34,11 +34,11 @@ export function TrustStrip() {
               key={`${partner.name}-${index}`}
               className="flex items-center gap-3 group opacity-60 hover:opacity-100 transition-opacity duration-200 cursor-default"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-indigo-500/60 group-hover:bg-indigo-400 group-hover:scale-125 transition-all" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#bdf033]/60 group-hover:bg-[#bdf033] group-hover:scale-125 transition-all" />
               <span className="font-display font-semibold text-xs sm:text-sm tracking-wider text-slate-300 uppercase whitespace-nowrap">
                 {partner.name}
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08] text-slate-400 whitespace-nowrap">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] border border-[#23272f] text-slate-400 whitespace-nowrap">
                 {partner.tag}
               </span>
             </div>

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#070709] text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200 font-sans antialiased overflow-x-hidden bg-grain relative">
+    <div className="min-h-screen bg-[#121419] text-[#ebedef] selection:bg-[#bdf033]/25 selection:text-[#bdf033] font-sans antialiased overflow-x-hidden bg-grain relative">
       {/* Background Space Starfield & Celestial Atmosphere (Fixed in viewport at z-0) */}
       <SpaceStarfield />
 

@@ -72,10 +72,10 @@ export function SpaceStarfield() {
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 overflow-hidden select-none z-0"
     >
-      {/* Soft Cosmic Nebula Atmosphere */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[1000px] h-[650px] bg-gradient-to-b from-indigo-600/12 via-violet-600/08 to-transparent blur-[160px] rounded-full animate-nebula opacity-70" />
-      <div className="absolute top-[35%] -left-36 w-[600px] h-[500px] bg-gradient-to-tr from-cyan-600/10 via-indigo-950/15 to-transparent blur-[150px] rounded-full animate-nebula opacity-50" />
-      <div className="absolute top-[65%] -right-36 w-[650px] h-[550px] bg-gradient-to-bl from-purple-600/10 via-indigo-950/15 to-transparent blur-[160px] rounded-full animate-nebula opacity-50" />
+      {/* Soft Ambient Glow Atmosphere */}
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[1000px] h-[650px] bg-gradient-to-b from-[#bdf033]/08 via-[#23272f]/10 to-transparent blur-[160px] rounded-full animate-nebula opacity-70" />
+      <div className="absolute top-[35%] -left-36 w-[600px] h-[500px] bg-gradient-to-tr from-[#bdf033]/05 via-[#1c2029]/20 to-transparent blur-[150px] rounded-full animate-nebula opacity-40" />
+      <div className="absolute top-[65%] -right-36 w-[650px] h-[550px] bg-gradient-to-bl from-[#a8d82a]/06 via-[#1c2029]/20 to-transparent blur-[160px] rounded-full animate-nebula opacity-40" />
 
       {/* Small, Delicate Pinpoint Twinkling Stars */}
       {STARS_DATA.map((star) => (

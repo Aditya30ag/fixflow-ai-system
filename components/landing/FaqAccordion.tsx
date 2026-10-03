@@ -18,7 +18,7 @@ export function FaqAccordion() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left Column: Heading (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <p className="text-xs font-mono-tag uppercase text-indigo-400 tracking-[0.2em]">
+            <p className="text-xs font-mono-tag uppercase text-[#bdf033] tracking-[0.2em]">
               {faqs.sectionTag}
             </p>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight leading-tight">
@@ -28,13 +28,13 @@ export function FaqAccordion() {
               {faqs.subheading}
             </p>
 
-            <div className="pt-6 border-t border-white/[0.06]">
+            <div className="pt-6 border-t border-[#23272f]">
               <p className="text-xs text-slate-400">
                 Have a proprietary property management software or custom SIP telephony stack?
               </p>
               <a
                 href="mailto:support@fixflow.ai"
-                className="inline-block mt-2 text-xs font-semibold text-indigo-300 hover:text-indigo-200 underline underline-offset-4"
+                className="inline-block mt-2 text-xs font-semibold text-[#bdf033] hover:text-[#d4f968] underline underline-offset-4"
               >
                 Contact our proptech engineering team →
               </a>
@@ -50,8 +50,8 @@ export function FaqAccordion() {
                   key={index}
                   className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                     isOpen
-                      ? 'bg-[#0E0F16] border-indigo-500/30'
-                      : 'bg-[#0B0C10] border-white/[0.06] hover:border-white/[0.12]'
+                      ? 'bg-[#1c2029] border-[#bdf033]/40'
+                      : 'bg-[#16181d] border-[#23272f] hover:border-[#bdf033]/20'
                   }`}
                 >
                   <button
@@ -60,14 +60,14 @@ export function FaqAccordion() {
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
                     id={`faq-question-${index}`}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bdf033]"
                   >
                     <span className="font-display font-semibold text-sm sm:text-base text-white leading-snug">
                       {item.question}
                     </span>
                     <ChevronDown
                       className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-indigo-400' : ''
+                        isOpen ? 'rotate-180 text-[#bdf033]' : ''
                       }`}
                     />
                   </button>
