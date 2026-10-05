@@ -28,6 +28,10 @@ const pageTitles: Record<string, { title: string; subtitle: string }> = {
     title: 'Lease Management',
     subtitle: 'Review tenant contracts, upcoming expiries, and automate renewals',
   },
+  '/dashboard/issues': {
+    title: 'Issues & Maintenance Triage',
+    subtitle: 'Track, assign, and autonomously dispatch maintenance tickets across your portfolio',
+  },
   '/ai-agents': {
     title: 'Autonomous AI Agents',
     subtitle: 'Deploy and configure intelligent voice bots for tenant communications',

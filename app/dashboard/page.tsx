@@ -29,8 +29,10 @@ import {
   ReminderItem,
 } from '@/lib/mockData';
 import { formatCurrency } from '@/lib/utils';
+import { useIssues } from '@/lib/issuesStore';
 
 export default function DashboardPage() {
+  const { openCount } = useIssues();
   const [reminders, setReminders] = useState<ReminderItem[]>(mockUpcomingReminders);
 
   const toggleReminder = (id: string) => {
@@ -114,16 +116,18 @@ export default function DashboardPage() {
           subtext="Projected: $2.38M / year"
         />
 
-        <StatCard
-          title="Pending Issues"
-          value={mockDashboardMetrics.pendingIssues.value}
-          trend={mockDashboardMetrics.pendingIssues.trend}
-          isPositive={true}
-          icon={AlertCircle}
-          iconColor="text-indigo-600"
-          iconBg="bg-indigo-50"
-          subtext="Avg AI Resolution: 2.1 hrs"
-        />
+        <Link href="/dashboard/issues" className="block group">
+          <StatCard
+            title="Pending Issues"
+            value={openCount}
+            trend={mockDashboardMetrics.pendingIssues.trend}
+            isPositive={true}
+            icon={AlertCircle}
+            iconColor="text-indigo-600"
+            iconBg="bg-indigo-50 group-hover:bg-indigo-100 transition-colors"
+            subtext="Avg AI Resolution: 2.1 hrs"
+          />
+        </Link>
       </div>
 
       {/* Charts Grid */}

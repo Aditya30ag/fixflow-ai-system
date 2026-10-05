@@ -17,8 +17,10 @@ import {
   ChevronRight,
   ShieldCheck,
   ExternalLink,
+  AlertCircle,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useIssues } from '@/lib/issuesStore';
 
 interface NavItem {
   name: string;
@@ -32,45 +34,52 @@ interface NavSection {
   items: NavItem[];
 }
 
-const navSections: NavSection[] = [
-  {
-    items: [
-      { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-      { name: 'Properties', href: '/properties', icon: Building2 },
-      { name: 'Leases', href: '/leases', icon: FileText },
-    ],
-  },
-  {
-    title: 'AI AUTOMATION',
-    items: [
-      { name: 'AI Agents', href: '/ai-agents', icon: Bot, badge: '6 Active' },
-      { name: 'AI Call Logs', href: '/ai-call-logs', icon: PhoneCall },
-    ],
-  },
-  {
-    title: 'OPERATIONS',
-    items: [
-      { name: 'People', href: '/people', icon: Users },
-      { name: 'Report Issue', href: '/report-issue', icon: AlertTriangle, badge: 'New' },
-      { name: 'Reports', href: '/reports', icon: BarChart3 },
-    ],
-  },
-  {
-    title: 'TENANT EXPERIENCE',
-    items: [
-      { name: 'Tenant Portal', href: '/tenant/repair', icon: ExternalLink, badge: 'Live' },
-    ],
-  },
-  {
-    title: 'SYSTEM',
-    items: [
-      { name: 'Settings', href: '/settings', icon: Settings },
-    ],
-  },
-];
-
 export function Sidebar() {
   const pathname = usePathname();
+  const { openCount } = useIssues();
+
+  const navSections: NavSection[] = [
+    {
+      items: [
+        { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+        { name: 'Properties', href: '/properties', icon: Building2 },
+        { name: 'Leases', href: '/leases', icon: FileText },
+        {
+          name: 'Issues',
+          href: '/dashboard/issues',
+          icon: AlertCircle,
+          badge: openCount > 0 ? `${openCount}` : undefined,
+        },
+      ],
+    },
+    {
+      title: 'AI AUTOMATION',
+      items: [
+        { name: 'AI Agents', href: '/ai-agents', icon: Bot, badge: '6 Active' },
+        { name: 'AI Call Logs', href: '/ai-call-logs', icon: PhoneCall },
+      ],
+    },
+    {
+      title: 'OPERATIONS',
+      items: [
+        { name: 'People', href: '/people', icon: Users },
+        { name: 'Report Issue', href: '/report-issue', icon: AlertTriangle, badge: 'New' },
+        { name: 'Reports', href: '/reports', icon: BarChart3 },
+      ],
+    },
+    {
+      title: 'TENANT EXPERIENCE',
+      items: [
+        { name: 'Tenant Portal', href: '/tenant/repair', icon: ExternalLink, badge: 'Live' },
+      ],
+    },
+    {
+      title: 'SYSTEM',
+      items: [
+        { name: 'Settings', href: '/settings', icon: Settings },
+      ],
+    },
+  ];
 
   return (
     <aside className="fixed inset-y-0 left-0 z-40 w-60 bg-[#0F1B2D] text-slate-300 flex flex-col border-r border-[#1E2E48] transition-all">

@@ -93,21 +93,8 @@ export interface Tenant {
   }[];
 }
 
-export interface Issue {
-  id: string;
-  propertyId: string;
-  propertyName: string;
-  unit: string;
-  category: 'Maintenance' | 'Electrical' | 'Plumbing' | 'Other';
-  priority: 'Low' | 'Medium' | 'High' | 'Urgent';
-  status: 'Pending' | 'In Progress' | 'Resolved';
-  reportedDate: string;
-  description: string;
-  reporterName: string;
-  reporterContact: string;
-  assignedAgent?: string;
-  photoUrl?: string;
-}
+export type { Issue } from './issuesStore';
+
 
 export interface ActivityItem {
   id: string;
@@ -687,79 +674,8 @@ export const mockTenants: Tenant[] = [
   },
 ];
 
-export const mockIssues: Issue[] = [
-  {
-    id: 'ISS-503',
-    propertyId: 'prop-4',
-    propertyName: 'Oakwood Court Villas',
-    unit: 'Unit 12',
-    category: 'Plumbing',
-    priority: 'Urgent',
-    status: 'In Progress',
-    reportedDate: '2026-09-25 14:15',
-    description: 'Steady leak under kitchen sink basin. Threatening cabinet bottom board. Bucket placed.',
-    reporterName: 'Devon Miles',
-    reporterContact: '+1 (555) 765-4321',
-    assignedAgent: 'Maintenance Coordinator',
-    photoUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80',
-  },
-  {
-    id: 'ISS-502',
-    propertyId: 'prop-1',
-    propertyName: 'Sunset Heights Apartments',
-    unit: 'Unit 108',
-    category: 'Electrical',
-    priority: 'Medium',
-    status: 'Resolved',
-    reportedDate: '2026-09-23 20:10',
-    description: 'Smart keypad lock battery flashing red indicator.',
-    reporterName: 'Elena Rostova',
-    reporterContact: '+1 (555) 432-9876',
-    assignedAgent: 'Maintenance Coordinator',
-  },
-  {
-    id: 'ISS-501',
-    propertyId: 'prop-2',
-    propertyName: 'Grandview Executive Lofts',
-    unit: 'Unit 201',
-    category: 'Maintenance',
-    priority: 'Low',
-    status: 'Pending',
-    reportedDate: '2026-09-22 11:20',
-    description: 'Balcony sliding glass door handle is loose and sticks when latching.',
-    reporterName: 'William Harper',
-    reporterContact: '+1 (555) 123-4567',
-    assignedAgent: 'Vendor & Contractor Dispatcher',
-  },
-  {
-    id: 'ISS-500',
-    propertyId: 'prop-3',
-    propertyName: 'Parkline Plaza Commercial',
-    unit: 'Suite 300',
-    category: 'Electrical',
-    priority: 'High',
-    status: 'In Progress',
-    reportedDate: '2026-09-20 09:45',
-    description: 'HVAC thermostat control panel displaying error code E-42 intermittently.',
-    reporterName: 'Apex Health Systems',
-    reporterContact: '+1 (555) 901-3322',
-    assignedAgent: 'Maintenance Coordinator',
-  },
-  {
-    id: 'ISS-499',
-    propertyId: 'prop-1',
-    propertyName: 'Sunset Heights Apartments',
-    unit: 'Common Area',
-    category: 'Other',
-    priority: 'Medium',
-    status: 'Resolved',
-    reportedDate: '2026-09-18 16:30',
-    description: 'Gym treadmill belt requires lubrication and recalibration.',
-    reporterName: 'Sarah Jenkins',
-    reporterContact: '+1 (555) 234-8901',
-    assignedAgent: 'Vendor & Contractor Dispatcher',
-  },
-];
+export { INITIAL_ISSUES as mockIssues } from './issuesStore';
+
 
 export const mockDashboardMetrics = {
   totalProperties: { value: 4, trend: '+1 this quarter', isPositive: true },

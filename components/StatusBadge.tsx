@@ -36,6 +36,9 @@ export function StatusBadge({ status, showDot = true, className }: StatusBadgePr
   if (['active', 'completed', 'paid', 'resolved', 'positive'].includes(normalized)) {
     badgeStyles = 'bg-emerald-50 text-emerald-700 border-emerald-200/80';
     dotStyles = 'bg-emerald-500';
+  } else if (['open'].includes(normalized)) {
+    badgeStyles = 'bg-blue-50 text-blue-700 border-blue-200/80';
+    dotStyles = 'bg-blue-500';
   } else if (['expiring soon', 'in progress', 'pending', 'medium'].includes(normalized)) {
     badgeStyles = 'bg-amber-50 text-amber-700 border-amber-200/80';
     dotStyles = 'bg-amber-500';
@@ -43,8 +46,8 @@ export function StatusBadge({ status, showDot = true, className }: StatusBadgePr
     badgeStyles = 'bg-rose-50 text-rose-700 border-rose-200/80';
     dotStyles = 'bg-rose-500';
   } else if (['low', 'neutral'].includes(normalized)) {
-    badgeStyles = 'bg-blue-50 text-blue-700 border-blue-200/80';
-    dotStyles = 'bg-blue-500';
+    badgeStyles = 'bg-slate-100 text-slate-700 border-slate-200/80';
+    dotStyles = 'bg-slate-400';
   }
 
   return (

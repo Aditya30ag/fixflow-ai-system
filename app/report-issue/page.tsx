@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 import { DataTable, Column } from '@/components/DataTable';
 import { StatusBadge } from '@/components/StatusBadge';
-import { mockIssues, mockProperties, Issue } from '@/lib/mockData';
+import { mockProperties, Issue } from '@/lib/mockData';
+import { useIssues } from '@/lib/issuesStore';
 
 const categories = [
   { id: 'Plumbing', label: 'Plumbing', icon: Droplets, color: 'text-blue-500' },
@@ -37,7 +38,7 @@ const priorityLevels = [
 ];
 
 export default function ReportIssuePage() {
-  const [issues, setIssues] = useState<Issue[]>(mockIssues);
+  const { issues, addIssue } = useIssues();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Form State
@@ -58,24 +59,56 @@ export default function ReportIssuePage() {
     const propertyObj = mockProperties.find((p) => p.id === selectedPropertyId);
 
     const newIssue: Issue = {
-      id: `ISS-${Math.floor(504 + Math.random() * 500)}`,
+      id: `ISS-${Math.floor(505 + Math.random() * 490)}`,
+      title: `${category} Issue at ${unit.trim() || 'General Area'}`,
       propertyId: selectedPropertyId,
-      propertyName: propertyObj ? propertyObj.name : 'Sunset Heights',
+      propertyName: propertyObj ? propertyObj.name : 'Sunset Heights Apartments',
       unit: unit.trim() || 'General Area',
       category,
       priority,
-      status: 'Pending',
+      status: 'Open',
       reportedDate: 'Just now',
+      createdAt: new Date().toISOString(),
+      updatedAt: 'Just now',
       description,
       reporterName,
       reporterContact,
+      source: 'Manual',
       assignedAgent:
         category === 'Plumbing' || category === 'Electrical'
-          ? 'Maintenance Coordinator'
+          ? 'Maintenance Coordinator AI'
           : 'Vendor & Contractor Dispatcher',
+      assignedVendor:
+        category === 'Plumbing'
+          ? 'Apex Emergency Plumbing Pros'
+          : category === 'Electrical'
+          ? 'VoltMaster Commercial Electrical'
+          : 'Preferred Facility Techs',
+      costEstimate: '$150 - $280',
+      photos:
+        uploadedFiles.length > 0
+          ? uploadedFiles
+          : ['https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80'],
+      timeline: [
+        {
+          id: `tl-${Date.now()}-1`,
+          title: 'Issue Submitted Manually',
+          description: `Ticket created by ${reporterName} via Operations Portal`,
+          timestamp: 'Just now',
+          type: 'report',
+        },
+        {
+          id: `tl-${Date.now()}-2`,
+          title: 'AI Coordinator Assigned',
+          description: 'Triaged and queued for contractor confirmation',
+          timestamp: 'Just now',
+          type: 'ai',
+        },
+      ],
+      comments: [],
     };
 
-    setIssues([newIssue, ...issues]);
+    addIssue(newIssue);
     setIsSubmitted(true);
     // Reset Form
     setDescription('');
@@ -179,13 +212,22 @@ export default function ReportIssuePage() {
           </p>
         </div>
 
-        <Link
-          href="/tenant/repair"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-semibold shadow-2xs transition-all active:scale-95"
-        >
-          <ExternalLink className="w-4 h-4" />
-          <span>Open Tenant Portal</span>
-        </Link>
+        <div className="flex items-center gap-2.5">
+          <Link
+            href="/dashboard/issues"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold shadow-2xs transition-all active:scale-95"
+          >
+            <Wrench className="w-3.5 h-3.5 text-blue-600" />
+            <span>View All Issues</span>
+          </Link>
+          <Link
+            href="/tenant/repair"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-semibold shadow-2xs transition-all active:scale-95"
+          >
+            <ExternalLink className="w-4 h-4" />
+            <span>Open Tenant Portal</span>
+          </Link>
+        </div>
       </div>
 
       {/* Success Notification Banner */}
@@ -202,13 +244,21 @@ export default function ReportIssuePage() {
               </p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => setIsSubmitted(false)}
-            className="text-emerald-700 hover:text-emerald-900 text-xs font-medium"
-          >
-            Dismiss
-          </button>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/dashboard/issues"
+              className="text-xs font-bold text-emerald-800 underline hover:text-emerald-950"
+            >
+              View in Issues Dashboard →
+            </Link>
+            <button
+              type="button"
+              onClick={() => setIsSubmitted(false)}
+              className="text-emerald-700 hover:text-emerald-900 text-xs font-medium"
+            >
+              Dismiss
+            </button>
+          </div>
         </div>
       )}
 
