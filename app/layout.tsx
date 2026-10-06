@@ -38,7 +38,7 @@ export default function RootLayout({
       lang="en"
       className={`h-full ${inter.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable}`}
     >
-      <body className="min-h-full bg-[#070709] text-slate-100 antialiased font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
+      <body className="min-h-full bg-[#f5f5f7] text-[#1e293b] antialiased font-sans selection:bg-[#081b45] selection:text-white">
         <AdminShell>{children}</AdminShell>
       </body>
     </html>

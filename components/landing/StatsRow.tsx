@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { landingData } from './landingData';
+import { Container } from './Primitives';
 
 export function StatsRow() {
   const { stats } = landingData;
@@ -16,7 +17,7 @@ export function StatsRow() {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
 
     if (containerRef.current) {
@@ -27,43 +28,47 @@ export function StatsRow() {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-20 md:py-28 relative">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {stats.map((stat) => (
+    <section ref={containerRef} className="py-20 lg:py-24 bg-[#f5f5f7]">
+      <Container size="default">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, idx) => (
             <div
               key={stat.label}
-              className="relative p-6 sm:p-7 rounded-2xl bg-[#16181d] border border-[#23272f] hover:border-[#bdf033]/30 hover:bg-[#1c2029] transition-all duration-300 group"
+              className="relative p-7 sm:p-8 rounded-2xl bg-white border border-[#d8dde7] shadow-[0_8px_24px_rgba(18,24,35,0.04)] hover:shadow-[0_16px_36px_rgba(18,24,35,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               {/* Subtle top indicator bar */}
-              <div className="w-8 h-[2px] bg-gradient-to-r from-[#bdf033] to-transparent mb-5 group-hover:w-16 transition-all duration-300" />
+              <div>
+                <div className="w-8 h-1 rounded-full bg-[#081b45] mb-6 group-hover:w-14 transition-all duration-300" />
 
-              {/* Number display */}
-              <div className="flex items-baseline gap-1 font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white">
-                <span className="text-[#bdf033] group-hover:text-[#d4f968] transition-colors">
-                  {stat.prefix}
-                </span>
-                <span>
-                  {hasAnimated ? stat.numeric : Math.floor(stat.numeric * 0.7)}
-                </span>
-                <span className="text-[#bdf033] text-2xl sm:text-3xl font-light">
-                  {stat.suffix}
-                </span>
+                {/* Number display */}
+                <div className="font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] tracking-tight text-[#0b0d12] flex items-baseline gap-0.5">
+                  <span className="text-[#081b45]">{stat.prefix}</span>
+                  <span>
+                    {idx === 3
+                      ? '24/7'
+                      : hasAnimated
+                      ? stat.numeric
+                      : Math.floor(stat.numeric * 0.7)}
+                  </span>
+                  <span className="text-[#18aae3] text-2xl sm:text-3xl font-bold">
+                    {idx === 3 ? '/365' : stat.suffix}
+                  </span>
+                </div>
+
+                {/* Stat Label */}
+                <h3 className="mt-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#1a2232]">
+                  {stat.label}
+                </h3>
               </div>
 
-              {/* Stat Label */}
-              <h3 className="mt-3 text-xs sm:text-sm font-semibold uppercase font-mono tracking-wider text-slate-300">
-                {stat.label}
-              </h3>
-
-              {/* Detail */}
-              <p className="mt-2 text-xs text-slate-400/90 leading-relaxed font-normal">
+              {/* Detail Description */}
+              <p className="mt-4 text-xs sm:text-[13px] text-[#6b7386] leading-relaxed">
                 {stat.description}
               </p>
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

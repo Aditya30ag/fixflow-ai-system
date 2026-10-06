@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { SpaceStarfield } from '@/components/landing/SpaceStarfield';
 import { FloatingNavbar } from '@/components/landing/FloatingNavbar';
 import { HeroSection } from '@/components/landing/HeroSection';
 import { TrustStrip } from '@/components/landing/TrustStrip';
@@ -25,47 +24,42 @@ export const metadata: Metadata = {
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#121419] text-[#ebedef] selection:bg-[#bdf033]/25 selection:text-[#bdf033] font-sans antialiased overflow-x-hidden bg-grain relative">
-      {/* Background Space Starfield & Celestial Atmosphere (Fixed in viewport at z-0) */}
-      <SpaceStarfield />
-
-      {/* 1. Floating Pill Navbar */}
+    <div className="min-h-screen bg-[#f5f5f7] text-[#232533] selection:bg-[#081b45] selection:text-white font-sans antialiased overflow-x-hidden">
+      {/* 1. Sticky Navbar */}
       <FloatingNavbar />
 
-      {/* Main Content Layout with explicit z-10 stacking */}
+      {/* Main Content Layout */}
       <main className="relative z-10">
-        {/* 2. Hero Section with 3D perspective mockup */}
+        {/* 2. Hero Section with Signature Deepdale Pill Enclosure & Live Call Card */}
         <HeroSection />
 
-        {/* 3. Trust Strip Marquee with faded edges */}
+        {/* 3. Trusted-by Smooth Marquee */}
         <TrustStrip />
 
-        {/* 4. Stats Row with animated count-up numbers */}
+        {/* 4. Institutional Stats Row */}
         <StatsRow />
 
-        {/* 5. Bento Grid Features with cursor glow */}
+        {/* 5. Core Capabilities (Signature Deepdale #040611 Obsidian Bento with Inset Rim Glow) */}
         <BentoFeatures />
 
-        {/* 6. Showcase / Work with sliding arrow hover */}
+        {/* 6. Live Environments Dual Showcase */}
         <ShowcaseSection />
 
-        {/* 7. How It Works with numbered connected steps */}
+        {/* 7. How It Works Timeline Steps */}
         <HowItWorksSteps />
 
-        {/* 8. Testimonials Marquee */}
+        {/* 8. Operator Testimonials */}
         <TestimonialsMarquee />
 
         {/* 9. Accessible FAQ Accordion */}
         <FaqAccordion />
 
-        {/* 10. Final CTA Full-Width Block */}
+        {/* 10. High-Contrast Final CTA */}
         <FinalCta />
       </main>
 
-      {/* 11. Footer with big wordmark and status indicator */}
-      <div className="relative z-10">
-        <Footer />
-      </div>
+      {/* 11. Institutional Enterprise Footer */}
+      <Footer />
     </div>
   );
 }

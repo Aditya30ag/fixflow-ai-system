@@ -3,13 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { landingData } from './landingData';
-import { 
-  Building2, 
-  Menu, 
-  X, 
-  ArrowRight, 
-  Wrench
-} from 'lucide-react';
+import { Container } from './Primitives';
+import { Building2, Menu, X, ArrowRight, Wrench } from 'lucide-react';
 
 export function FloatingNavbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,7 +13,7 @@ export function FloatingNavbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -26,128 +21,126 @@ export function FloatingNavbar() {
 
   return (
     <>
-      {/* Floating Pill Container */}
-      <header className="fixed top-4 inset-x-0 z-50 px-4 sm:px-6 pointer-events-none">
-        <div className="max-w-5xl mx-auto pointer-events-auto">
+      <header
+        className={`sticky top-0 z-[60] w-full transition-all duration-200 border-b ${
+          scrolled
+            ? 'bg-[#f5f5f7]/85 backdrop-blur-md border-[#d8dde7] shadow-[0_4px_20px_rgba(18,24,35,0.04)]'
+            : 'bg-transparent border-transparent'
+        }`}
+      >
+        <Container size="default" className="flex items-center justify-between py-3.5 sm:py-4">
+          {/* Brand Logo */}
+          <Link
+            href="/"
+            className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-lg"
+            aria-label={`${navigation.brandName} home`}
+          >
+            <div className="w-9 h-9 rounded-xl bg-[#081b45] text-white flex items-center justify-center shadow-sm group-hover:bg-[#11131a] transition-colors">
+              <Building2 className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[1.35rem] sm:text-[1.55rem] font-extrabold tracking-[-0.03em] text-[#081b45]">
+                {navigation.brandName}
+              </span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#6b7386] bg-[#eef1f6] px-1.5 py-0.5 rounded border border-[#d8dde7]">
+                OS
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation Links */}
           <nav
             aria-label="Primary Navigation"
-            className={`transition-all duration-300 rounded-full px-4 sm:px-6 py-2.5 flex items-center justify-between border ${
-              scrolled
-                ? 'bg-[#121419]/90 backdrop-blur-xl border-[#23272f] shadow-2xl shadow-black/70'
-                : 'bg-[#16181d]/80 backdrop-blur-md border-[#23272f] shadow-lg shadow-black/30'
-            }`}
+            className="hidden lg:flex items-center gap-8 text-[0.98rem] font-semibold text-[#171A24]"
           >
-            {/* Logo */}
-            <Link 
-              href="/" 
-              className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bdf033] rounded-full py-1 pr-2"
+            {navigation.links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-[#081b45] focus:outline-none focus-visible:ring-2 focus-visible:ring-black rounded"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTAs */}
+          <div className="hidden sm:flex items-center gap-3">
+            <Link
+              href={navigation.ctaSecondary.href}
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-[12px] border border-[#d8dde7] bg-white text-xs font-semibold text-[#1a2232] hover:bg-[#f3f5f9] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#bef033] to-[#a8d82a] p-[1px] shadow-sm shadow-[#bdf033]/20 group-hover:scale-105 transition-transform duration-200">
-                <div className="w-full h-full rounded-full bg-[#121419] flex items-center justify-center">
-                  <Building2 className="w-4 h-4 text-[#bdf033]" />
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-display font-bold text-base tracking-tight text-white group-hover:text-[#bdf033] transition-colors">
-                  {navigation.brandName}
-                </span>
-                <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded-full bg-[#bdf033]/10 border border-[#bdf033]/25 text-[#bdf033] font-semibold tracking-wider">
-                  OS
-                </span>
-              </div>
+              <Wrench className="w-3.5 h-3.5 text-[#6b7386]" />
+              <span>{navigation.ctaSecondary.label}</span>
             </Link>
 
-            {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-1 text-xs font-medium text-slate-300">
-              {navigation.links.map((link) => (
+            <Link
+              href={navigation.ctaPrimary.href}
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-[12px] bg-black text-xs font-semibold text-white hover:bg-[#1f2430] active:scale-[0.985] shadow-[0_4px_14px_rgba(0,0,0,0.12)] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
+            >
+              <span>{navigation.ctaPrimary.label}</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex sm:hidden items-center gap-2">
+            <Link
+              href={navigation.ctaPrimary.href}
+              className="px-3.5 py-1.5 rounded-[10px] bg-black text-xs font-semibold text-white"
+            >
+              Launch
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#d8dde7] bg-white text-[#111827] shadow-sm hover:bg-[#f3f5f9] focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </Container>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileOpen && (
+          <div className="lg:hidden px-4 pb-4 pt-2">
+            <div className="rounded-2xl border border-[#d7dbe3] bg-white p-4 shadow-[0_16px_36px_rgba(9,13,24,0.12)] space-y-3">
+              <div className="flex flex-col space-y-1">
+                {navigation.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="px-3 py-2.5 rounded-xl text-sm font-semibold text-[#1a2232] hover:bg-[#eef1f6] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="pt-3 border-t border-[#eaedf3] flex flex-col gap-2">
                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.05] transition-all duration-150 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#bdf033]"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* Desktop Right CTAs */}
-            <div className="hidden sm:flex items-center gap-2.5">
-              <Link
-                href={navigation.ctaSecondary.href}
-                className="text-xs font-medium text-slate-300 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/[0.06] transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#bdf033]"
-              >
-                <Wrench className="w-3.5 h-3.5 text-slate-400" />
-                <span>{navigation.ctaSecondary.label}</span>
-              </Link>
-              <Link
-                href={navigation.ctaPrimary.href}
-                className="relative inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-[#121419] rounded-full bg-[#bdf033] hover:bg-[#a8d82a] shadow-md shadow-[#bdf033]/20 hover:shadow-[#bdf033]/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 border border-[#bdf033]/40 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bdf033]"
-              >
-                <span>{navigation.ctaPrimary.label}</span>
-                <ArrowRight className="w-3 h-3 ml-1 text-[#121419] group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
-
-            {/* Mobile Hamburger Button */}
-            <div className="flex md:hidden items-center gap-2">
-              <Link
-                href={navigation.ctaPrimary.href}
-                className="px-3 py-1 text-xs font-semibold text-[#121419] bg-[#bdf033] rounded-full"
-              >
-                Launch
-              </Link>
-              <button
-                type="button"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="p-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/[0.08] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#bdf033]"
-                aria-label="Toggle mobile menu"
-                aria-expanded={mobileOpen}
-              >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Mobile Drawer Backdrop & Menu */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-black/70 backdrop-blur-md md:hidden flex flex-col justify-start pt-24 px-6 animate-fadeIn">
-          <div className="bg-[#16181d] border border-[#23272f] rounded-2xl p-6 shadow-2xl space-y-4">
-            <div className="space-y-1">
-              {navigation.links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
+                  href={navigation.ctaSecondary.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:text-white hover:bg-white/[0.05] transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[#d8dde7] bg-white text-xs font-semibold text-[#1a2232]"
                 >
-                  {link.label}
+                  <Wrench className="w-3.5 h-3.5 text-[#6b7386]" />
+                  <span>{navigation.ctaSecondary.label}</span>
                 </Link>
-              ))}
-            </div>
-
-            <div className="pt-4 border-t border-[#23272f] space-y-2">
-              <Link
-                href={navigation.ctaSecondary.href}
-                onClick={() => setMobileOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[#23272f] text-xs font-medium text-slate-200 hover:bg-white/[0.05]"
-              >
-                <Wrench className="w-3.5 h-3.5 text-[#bdf033]" />
-                <span>{navigation.ctaSecondary.label}</span>
-              </Link>
-              <Link
-                href={navigation.ctaPrimary.href}
-                onClick={() => setMobileOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#bdf033] text-xs font-semibold text-[#121419] shadow-lg shadow-[#bdf033]/20"
-              >
-                <span>{navigation.ctaPrimary.label}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#121419]" />
-              </Link>
+                <Link
+                  href={navigation.ctaPrimary.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-black text-xs font-semibold text-white"
+                >
+                  <span>{navigation.ctaPrimary.label}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </header>
     </>
   );
 }
