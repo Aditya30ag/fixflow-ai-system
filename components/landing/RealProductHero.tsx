@@ -72,9 +72,6 @@ export function RealProductHero() {
                   <div className="w-3 h-3 rounded-full bg-[#ef4646]" />
                   <div className="w-3 h-3 rounded-full bg-[#f59e0b]" />
                   <div className="w-3 h-3 rounded-full bg-[#22c55e]" />
-                  <div className="ml-3 hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-[#e5e7eb] text-[11px] font-mono text-[#6b7386]">
-                    <span>https://fixnet.ai/dashboard</span>
-                  </div>
                 </div>
                 <div className="flex items-center gap-2 text-[11px] font-mono text-[#22c55e] font-semibold">
                   <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" />

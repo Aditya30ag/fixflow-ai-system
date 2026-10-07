@@ -229,9 +229,6 @@ export function RealHowItWorks() {
                     <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                     <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-                    <span className="font-mono text-[11px] ml-2 text-[#4b5563] hidden sm:inline">
-                      https://fixnet.app{selectedStep.screen.replace('.webp', '')}
-                    </span>
                   </div>
                   <span className="text-[11px] font-mono font-medium text-[#081b45] bg-white px-2.5 py-0.5 rounded-full border border-[#d8dde7]">
                     Live Software Preview

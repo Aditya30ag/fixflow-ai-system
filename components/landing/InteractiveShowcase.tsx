@@ -151,11 +151,6 @@ export function LandingShowcase() {
               <span className="w-3 h-3 rounded-full bg-rose-400" />
               <span className="w-3 h-3 rounded-full bg-amber-400" />
               <span className="w-3 h-3 rounded-full bg-emerald-400" />
-              <span className="ml-2 text-xs font-mono text-slate-500 hidden sm:inline px-3 py-1 rounded bg-slate-50 border border-slate-200">
-                {activeTab === 'dashboard' && 'https://fixnet.system/dashboard — Executive Command'}
-                {activeTab === 'voice' && 'https://fixnet.system/ai-call-logs — Live Speech Triage'}
-                {activeTab === 'tenant' && 'https://martinco.repair/tenant — Resident Portal'}
-              </span>
             </div>
 
             <div className="flex items-center gap-3">
