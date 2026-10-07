@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIssues } from '@/lib/issuesStore';
+import { FixLogo } from '@/components/FixLogo';
 
 interface NavItem {
   name: string;
@@ -86,12 +87,10 @@ export function Sidebar() {
       {/* Brand Header */}
       <div className="h-16 flex items-center justify-between px-5 border-b border-[#1E2E48]">
         <Link href="/dashboard" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            <Sparkles className="w-4 h-4 text-white" />
-          </div>
+          <FixLogo size={34} className="shrink-0 transition-transform group-hover:scale-105" />
           <div className="flex flex-col">
             <span className="font-bold text-lg text-white tracking-tight leading-none flex items-center gap-1.5">
-              Fiflow
+              FixNet
               <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30">
                 AI SaaS
               </span>

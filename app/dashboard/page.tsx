@@ -55,7 +55,7 @@ export default function DashboardPage() {
               Welcome back, Aditya
             </h2>
             <p className="text-xs md:text-sm text-slate-300 max-w-xl">
-              Fiflow AI handled <strong className="text-white font-semibold">14 voice calls</strong> and automatically resolved <strong className="text-white font-semibold">3 maintenance requests</strong> in the last 24 hours across your 4 properties.
+              FixNet AI handled <strong className="text-white font-semibold">14 voice calls</strong> and automatically resolved <strong className="text-white font-semibold">3 maintenance requests</strong> in the last 24 hours across your 4 properties.
             </p>
           </div>
 

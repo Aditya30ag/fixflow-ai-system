@@ -91,7 +91,7 @@ export default function SettingsPage() {
                 className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800"
               />
               <p className="text-[11px] text-slate-400 mt-1">
-                Tenants calling this line are automatically greeted by Fiflow AI.
+                Tenants calling this line are automatically greeted by FixNet AI.
               </p>
             </div>
 
@@ -133,7 +133,7 @@ export default function SettingsPage() {
               </label>
               <input
                 type="text"
-                defaultValue="Fiflow Property Group LLC"
+                defaultValue="FixNet Property Group LLC"
                 className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-800"
               />
             </div>

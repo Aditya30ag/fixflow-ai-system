@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="ff-grad-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081B45" />
+      <stop offset="100%" stop-color="#030D26" />
+    </linearGradient>
+    <linearGradient id="ff-grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18AAE3" />
+      <stop offset="100%" stop-color="#0061FF" />
+    </linearGradient>
+    <linearGradient id="ff-grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#16A34A" />
+    </linearGradient>
+    <filter id="ff-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Rounded App Tile Container -->
+  <rect width="48" height="48" rx="12" fill="url(#ff-grad-bg)" />
+  <rect x="0.5" y="0.5" width="47" height="47" rx="11.5" stroke="#FFFFFF" stroke-opacity="0.14" />
+
+  <!-- Geometric F-Hex Grid / Isometric Architecture Nodes -->
+  <!-- Vertical Flow Spine -->
+  <path
+    d="M14 12V36"
+    stroke="#FFFFFF"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  />
+
+  <!-- Upper Horizontal Flow Bar with Telephony Pulse -->
+  <path
+    d="M14 15H32C33.6569 15 35 16.3431 35 18C35 19.6569 33.6569 21 32 21H14"
+    stroke="url(#ff-grad-cyan)"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#ff-glow)"
+  />
+
+  <!-- Mid Flow Branch with Autonomous Dispatch Arrow -->
+  <path
+    d="M14 26H26C27.1046 26 28 26.8954 28 28C28 29.1046 27.1046 30 26 30H14"
+    stroke="#FFFFFF"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.9"
+  />
+
+  <!-- Live Pulse Telemetry Orb -->
+  <circle cx="34" cy="18" r="3" fill="#22C55E" filter="url(#ff-glow)" />
+  <circle cx="34" cy="18" r="1.5" fill="#FFFFFF" />
+</svg>

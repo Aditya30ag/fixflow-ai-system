@@ -94,7 +94,7 @@ export function LandingShowcase() {
             <span>Interactive Experience</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            See FixFlow in Real-Time Action
+            See FixNet in Real-Time Action
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
             Toggle between the Executive Command Center, live AI voice call telephony, 
@@ -152,8 +152,8 @@ export function LandingShowcase() {
               <span className="w-3 h-3 rounded-full bg-amber-400" />
               <span className="w-3 h-3 rounded-full bg-emerald-400" />
               <span className="ml-2 text-xs font-mono text-slate-500 hidden sm:inline px-3 py-1 rounded bg-slate-50 border border-slate-200">
-                {activeTab === 'dashboard' && 'https://fixflow.system/dashboard — Executive Command'}
-                {activeTab === 'voice' && 'https://fixflow.system/ai-call-logs — Live Speech Triage'}
+                {activeTab === 'dashboard' && 'https://fixnet.system/dashboard — Executive Command'}
+                {activeTab === 'voice' && 'https://fixnet.system/ai-call-logs — Live Speech Triage'}
                 {activeTab === 'tenant' && 'https://martinco.repair/tenant — Resident Portal'}
               </span>
             </div>

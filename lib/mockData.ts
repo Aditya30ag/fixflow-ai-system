@@ -291,7 +291,7 @@ export const mockAICallLogs: AICallLog[] = [
     sentiment: 'Positive',
     urgency: 'Medium',
     transcript: [
-      { speaker: 'Agent', time: '00:02', text: 'Hello Sarah! This is Alex from Fiflow Management on behalf of Sunset Heights. Am I speaking with Sarah Jenkins?' },
+      { speaker: 'Agent', time: '00:02', text: 'Hello Sarah! This is Alex from FixNet Management on behalf of Sunset Heights. Am I speaking with Sarah Jenkins?' },
       { speaker: 'Caller', time: '00:07', text: 'Yes, hi Alex. What can I do for you?' },
       { speaker: 'Agent', time: '00:10', text: 'I am reaching out regarding your lease for Unit 402 which is coming up for renewal next month. We would love to have you continue with us!' },
       { speaker: 'Caller', time: '00:18', text: 'I was actually hoping to renew, but I wanted to see if the monthly rent will remain at $2,450.' },
@@ -365,7 +365,7 @@ export const mockAICallLogs: AICallLog[] = [
     sentiment: 'Neutral',
     urgency: 'Medium',
     transcript: [
-      { speaker: 'Agent', time: '00:01', text: 'Hello, this is Fiflow AI calling for Apex Health Facilities team regarding Parkline Plaza lease renewal terms. Please call back at your earliest convenience or reply to our email.' },
+      { speaker: 'Agent', time: '00:01', text: 'Hello, this is FixNet AI calling for Apex Health Facilities team regarding Parkline Plaza lease renewal terms. Please call back at your earliest convenience or reply to our email.' },
     ],
     actionItems: ['Scheduled automated follow-up callback for 24h'],
   },
@@ -616,7 +616,7 @@ export const mockTenants: Tenant[] = [
       { id: 'pay-10', date: '2026-08-01', amount: 8500, status: 'Paid', method: 'Wire Transfer' },
     ],
     notes: [
-      { id: 'not-5', date: '2026-09-24', author: 'Fiflow AI', content: 'Renewal negotiation ongoing for multi-year lease extension.' },
+      { id: 'not-5', date: '2026-09-24', author: 'FixNet AI', content: 'Renewal negotiation ongoing for multi-year lease extension.' },
     ],
   },
   {

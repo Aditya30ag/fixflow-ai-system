@@ -8,7 +8,7 @@ export function LandingFaq() {
 
   const faqs = [
     {
-      q: "How does FixFlow handle life-safety emergencies (gas leaks, active structural floods)?",
+      q: "How does FixNet handle life-safety emergencies (gas leaks, active structural floods)?",
       a: "Our AI agents are strictly programmed with life-safety screening protocols. If a resident mentions gas smells, sparks near water, or structural instability, the agent immediately instructs them to evacuate or shut off main breakers, while instantaneously dialing emergency services and dispatching an alert to the designated on-call property manager."
     },
     {
@@ -16,8 +16,8 @@ export function LandingFaq() {
       a: "No! The Martin & Co tenant repair portal is completely web-based and mobile-optimized. Residents simply click a link or scan a QR code placed on their kitchen cabinet or thermostat. Our voice agents answer standard telephone calls without requiring the resident to use any app whatsoever."
     },
     {
-      q: "How does FixFlow integrate with existing Property Management Systems (PMS)?",
-      a: "FixFlow connects via RESTful Webhooks and direct APIs with major property management systems including AppFolio, Yardi Voyager, RealPage, and Buildium. Leases, tenant rosters, and generated work orders sync in real time without duplicating records."
+      q: "How does FixNet integrate with existing Property Management Systems (PMS)?",
+      a: "FixNet connects via RESTful Webhooks and direct APIs with major property management systems including AppFolio, Yardi Voyager, RealPage, and Buildium. Leases, tenant rosters, and generated work orders sync in real time without duplicating records."
     },
     {
       q: "What speech technology powers the conversational AI voice calls?",
@@ -28,7 +28,7 @@ export function LandingFaq() {
       a: "Yes. From the /ai-agents and /settings interfaces, managers can fine-tune agent personas, adjust spending authority thresholds (e.g. automatically approve plumbing up to $350), upload custom contractor contact lists, and specify lease agreement rules."
     },
     {
-      q: "How quickly can a property portfolio go live with FixFlow?",
+      q: "How quickly can a property portfolio go live with FixNet?",
       a: "Most portfolios are fully active within 24 to 48 hours. Simply import your property unit roster and tenant contact list, assign your dedicated local phone number, and share the self-service repair link with residents."
     }
   ];

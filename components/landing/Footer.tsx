@@ -4,7 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { landingData } from './landingData';
 import { Container } from './Primitives';
-import { Building2, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { FixLogo } from '@/components/FixLogo';
 
 export function Footer() {
   const { footer } = landingData;
@@ -15,11 +16,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-[#d8dde7]">
           {/* Brand Info (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <Link href="/" className="inline-flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-xl bg-[#081b45] text-white flex items-center justify-center shadow-sm">
-                <Building2 className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-extrabold text-lg tracking-tight text-[#081b45]">
+            <Link href="/" className="inline-flex items-center gap-2.5 group">
+              <FixLogo size={34} className="shrink-0 transition-transform duration-200 group-hover:scale-105" />
+              <span className="font-extrabold text-xl tracking-tight text-[#081b45]">
                 {footer.wordmark}
               </span>
             </Link>
@@ -67,7 +66,7 @@ export function Footer() {
         {/* Large Editorial Wordmark */}
         <div className="py-12 select-none pointer-events-none opacity-5 flex justify-center">
           <span className="font-black text-6xl sm:text-8xl md:text-9xl tracking-tighter text-[#081b45]">
-            FIXFLOW
+            FIXNET
           </span>
         </div>
 

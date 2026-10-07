@@ -155,12 +155,12 @@ export interface LandingContent {
 
 export const landingData: LandingContent = {
   meta: {
-    title: 'FixFlow AI — Autonomous Property Management & AI Voice Dispatch',
+    title: 'FixNet — Autonomous Property Management & AI Voice Dispatch',
     description: 'Transform 2 AM tenant emergencies, lease negotiations, and contractor dispatching into seamless autonomous workflows with 24/7 conversational voice telephony.',
     badge: 'Live Proptech Telephony v2.4',
   },
   navigation: {
-    brandName: 'FixFlow',
+    brandName: 'FixNet',
     links: [
       { label: 'Capabilities', href: '#features' },
       { label: 'Showcase', href: '#showcase' },
@@ -182,7 +182,7 @@ export const landingData: LandingContent = {
     titleLine1: 'The property portfolio OS that',
     highlightWord: 'effortlessly.',
     titleLine2: 'Day and night.',
-    description: 'FixFlow handles 2 AM burst pipe calls, self-service diagnostics, lease renewals, and contractor dispatch without waking your property managers.',
+    description: 'FixNet handles 2 AM burst pipe calls, self-service diagnostics, lease renewals, and contractor dispatch without waking your property managers.',
     primaryCta: {
       label: 'Explore Executive OS',
       href: '/dashboard',
@@ -251,7 +251,7 @@ export const landingData: LandingContent = {
         id: 'voice-telephony',
         tag: 'NEURAL VOICE TELEPHONY',
         title: '24/7 Conversational Voice Agents with Zero Hold Latency',
-        description: 'When a pipe bursts at 2:14 AM, FixFlow answers within 2 rings in human-grade natural speech, asks clarifying diagnostic questions, and triggers emergency vendor dispatch.',
+        description: 'When a pipe bursts at 2:14 AM, FixNet answers within 2 rings in human-grade natural speech, asks clarifying diagnostic questions, and triggers emergency vendor dispatch.',
         colSpan: 'lg:col-span-8',
         badge: 'Cartesia 90ms Engine',
         previewType: 'voice',
@@ -288,7 +288,7 @@ export const landingData: LandingContent = {
   showcase: {
     sectionTag: '02 — LIVE ENVIRONMENTS',
     heading: 'Dual-interface architecture built for speed',
-    subheading: 'Experience how FixFlow unifies enterprise portfolio operations with clean resident-facing repair tools.',
+    subheading: 'Experience how FixNet unifies enterprise portfolio operations with clean resident-facing repair tools.',
     projects: [
       {
         id: 'executive-command',
@@ -343,7 +343,7 @@ export const landingData: LandingContent = {
         number: '03',
         title: 'Autonomous Contractor Dispatch',
         summary: 'Automated paging with verified insurance',
-        details: 'FixFlow cross-references approved vendor rosters, confirms active liability certificates, books the earliest emergency slot, and texts the resident a tracking pass.',
+        details: 'FixNet cross-references approved vendor rosters, confirms active liability certificates, books the earliest emergency slot, and texts the resident a tracking pass.',
       },
       {
         number: '04',
@@ -359,7 +359,7 @@ export const landingData: LandingContent = {
     subheading: 'Read how property leaders cut emergency dispatch expenses while achieving unprecedented resident satisfaction scores.',
     items: [
       {
-        quote: 'FixFlow answered 14 emergency calls during a severe freeze weekend while my entire team was off. All burst pipes were isolated within 20 minutes. It paid for itself in one night.',
+        quote: 'FixNet answered 14 emergency calls during a severe freeze weekend while my entire team was off. All burst pipes were isolated within 20 minutes. It paid for itself in one night.',
         author: 'Marcus Vance',
         role: 'Senior Vice President of Operations',
         company: 'Vance Capital Properties',
@@ -395,31 +395,31 @@ export const landingData: LandingContent = {
   faqs: {
     sectionTag: '05 — FREQUENT QUESTIONS',
     heading: 'Clear answers for technical property operators',
-    subheading: 'Everything you need to know about integrating FixFlow into your existing property portfolio.',
+    subheading: 'Everything you need to know about integrating FixNet into your existing property portfolio.',
     items: [
       {
         question: 'How does the AI voice phone line handle true 2 AM life-safety emergencies?',
-        answer: 'FixFlow is configured with strict safety protocols. If a caller mentions active smoke, gas smell, structural collapse, or fire, the system immediately advises the tenant to evacuate and dials 911 / emergency services while alerting the portfolio property director via urgent SMS.',
+        answer: 'FixNet is configured with strict safety protocols. If a caller mentions active smoke, gas smell, structural collapse, or fire, the system immediately advises the tenant to evacuate and dials 911 / emergency services while alerting the portfolio property director via urgent SMS.',
       },
       {
         question: 'Do my tenants need to download an application?',
-        answer: 'No. FixFlow operates via standard telephone voice calls (any inbound phone number) and lightweight web links via the Martin & Co portal. Tenants can simply call your existing office number or open a link on their smartphone browser without creating another password.',
+        answer: 'No. FixNet operates via standard telephone voice calls (any inbound phone number) and lightweight web links via the Martin & Co portal. Tenants can simply call your existing office number or open a link on their smartphone browser without creating another password.',
       },
       {
-        question: 'How does FixFlow verify contractor liability and insurance?',
-        answer: 'You upload your preferred vendor roster with certificate of insurance (COI) expiration dates and hourly rate caps. FixFlow only dispatches contractors with valid, in-date insurance and matches the specific specialty required for the issue.',
+        question: 'How does FixNet verify contractor liability and insurance?',
+        answer: 'You upload your preferred vendor roster with certificate of insurance (COI) expiration dates and hourly rate caps. FixNet only dispatches contractors with valid, in-date insurance and matches the specific specialty required for the issue.',
       },
       {
         question: 'Can managers review call transcripts and intervene at any time?',
         answer: 'Yes. Every call is transcribed with turn-by-turn timestamps, audio playback, and sentiment tagging in the Executive Call Logs. Managers can set thresholds to receive instantaneous push alerts or take over any live issue with one click.',
       },
       {
-        question: 'How fast can we deploy FixFlow across our existing properties?',
-        answer: 'Most portfolios go live in under 48 hours. We simply port your after-hours maintenance phone line to FixFlow, upload your property unit directory and vendor list, and the autonomous voice agents begin fielding inquiries immediately.',
+        question: 'How fast can we deploy FixNet across our existing properties?',
+        answer: 'Most portfolios go live in under 48 hours. We simply port your after-hours maintenance phone line to FixNet, upload your property unit directory and vendor list, and the autonomous voice agents begin fielding inquiries immediately.',
       },
       {
         question: 'What is the pricing model?',
-        answer: 'FixFlow is priced transparently on a per-unit per-month basis ($1.20 - $2.50 / unit / month) with unlimited incoming voice minutes, zero per-call penalties, and access to both the Executive Dashboard and Tenant Repair Portal.',
+        answer: 'FixNet is priced transparently on a per-unit per-month basis ($1.20 - $2.50 / unit / month) with unlimited incoming voice minutes, zero per-call penalties, and access to both the Executive Dashboard and Tenant Repair Portal.',
       },
     ],
   },
@@ -438,7 +438,7 @@ export const landingData: LandingContent = {
     },
   },
   footer: {
-    wordmark: 'FIXFLOW AI',
+    wordmark: 'FIXNET',
     tagline: 'Autonomous property operations and neural voice dispatch for modern real estate portfolios.',
     columns: [
       {
@@ -471,6 +471,6 @@ export const landingData: LandingContent = {
         ],
       },
     ],
-    copyright: '© 2026 FixFlow AI Systems Inc. All rights reserved. Enterprise Proptech Telephony.',
+    copyright: '© 2026 FixNet Systems Inc. All rights reserved. Enterprise Proptech Telephony.',
   },
 };

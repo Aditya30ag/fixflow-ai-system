@@ -32,7 +32,7 @@ export function FaqAccordion() {
                 Have a proprietary property management software or custom SIP telephony stack?
               </p>
               <a
-                href="mailto:support@fixflow.ai"
+                href="mailto:support@fixnet.ai"
                 className="inline-block mt-2.5 text-xs sm:text-sm font-bold text-[#081b45] hover:text-[#18aae3] underline underline-offset-4 transition-colors"
               >
                 Contact our proptech engineering team →

@@ -70,7 +70,7 @@ export default function PeoplePage() {
           id: `not-${Date.now()}`,
           date: '2026-09-26',
           author: 'Aditya Patel (Manager)',
-          content: 'Tenant profile onboarded into Fiflow system.',
+          content: 'Tenant profile onboarded into FixNet system.',
         },
       ],
     };

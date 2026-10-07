@@ -56,7 +56,7 @@ const guideKnowledgeBase: Record<string, { introText: string; steps: string[] }>
       'If smart lock is not responding, check keypad backlight or swap the 4 AA batteries in the interior compartment.',
       'Pull the door firmly toward you while turning the lock thumbturn to align with the door strike plate.',
       'Inspect the door frame latch hole for debris, dust, or misalignment.',
-      'If using key fob or mobile access pass, ensure Bluetooth is toggled ON and Fiflow app is open.',
+      'If using key fob or mobile access pass, ensure Bluetooth is toggled ON and FixNet app is open.',
     ],
   },
   Default: {
@@ -245,7 +245,7 @@ function ChatContent() {
       const confirmMsg: ChatMessage = {
         id: `ai-confirmed-${Date.now()}`,
         sender: 'ai',
-        text: `Confirmed! Your maintenance visit is booked for ${bookingSlot}. A certified technician will call or text 30 minutes prior to arrival. Ticket #MCO-9428 has been linked to your Fiflow property record.`,
+        text: `Confirmed! Your maintenance visit is booked for ${bookingSlot}. A certified technician will call or text 30 minutes prior to arrival. Ticket #MCO-9428 has been linked to your FixNet property record.`,
       };
       setMessages((prev) => [...prev, confirmMsg]);
     }, 1500);

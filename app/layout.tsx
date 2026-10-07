@@ -24,7 +24,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'FixFlow AI — Autonomous Property Management & AI Voice Dispatch',
+  title: 'FixNet — Autonomous Property Management & AI Voice Dispatch',
   description: 'Autonomous proptech OS powering 24/7 conversational voice dispatch, emergency repair triage, and automatic lease renewals.',
 };
 

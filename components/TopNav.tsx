@@ -64,7 +64,7 @@ export function TopNav() {
   const [searchVal, setSearchVal] = useState('');
 
   const currentMeta = pageTitles[pathname] || {
-    title: 'Fiflow Portal',
+    title: 'FixNet Portal',
     subtitle: 'AI-Powered Property Management Platform',
   };
 

@@ -73,7 +73,7 @@ export function HeroSection() {
                   <div className="w-3 h-3 rounded-full bg-[#f59e0b]" />
                   <div className="w-3 h-3 rounded-full bg-[#22c55e]" />
                   <span className="ml-3 text-xs font-mono font-medium text-[#404555] hidden sm:inline">
-                    fixflow-telephony-node-us-east // live-dispatch
+                    fixnet-telephony-node-us-east // live-dispatch
                   </span>
                 </div>
 

@@ -1,16 +1,16 @@
-# 🏢 Fiflow — AI Property Management SaaS & Tenant Repair Portal
+# 🏢 FixNet — AI Property Management SaaS & Tenant Repair Portal
 
 An autonomous, AI-powered property management SaaS platform built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Recharts**.
 
-Fiflow features a dual-interface architecture:
-1. **Fiflow Executive Dashboard** — A comprehensive, high-density proptech management workspace for portfolio managers, tracking leases, revenue, maintenance tickets, and autonomous voice agents.
+FixNet features a dual-interface architecture:
+1. **FixNet Executive Dashboard** — A comprehensive, high-density proptech management workspace for portfolio managers, tracking leases, revenue, maintenance tickets, and autonomous voice agents.
 2. **Martin & Co Repair Services** (`/tenant/repair`) — A public tenant-facing self-service repair portal with interactive step-by-step AI troubleshooting and on-demand technician booking.
 
 ---
 
 ## 🎨 Design System
 
-### Fiflow Admin Dashboard
+### FixNet Admin Dashboard
 - **Sidebar Background**: `#0F1B2D` (Deep Navy)
 - **Main Content Background**: `#F4F6FA` (Light Gray-White)
 - **Primary / Accent**: `#3B82F6` (Electric Blue)
@@ -161,8 +161,8 @@ Accessible at `/tenant` or `/tenant/repair`:
 ### Installation
 ```bash
 # Clone the repository and install dependencies
-git clone https://github.com/your-username/fixflow-ai-system.git
-cd fixflow-ai-system
+git clone https://github.com/your-username/fixnet-ai-system.git
+cd fixnet-ai-system
 pnpm install
 ```
 

@@ -1,23 +1,17 @@
 import type { Metadata } from 'next';
 import { FloatingNavbar } from '@/components/landing/FloatingNavbar';
-import { HeroSection } from '@/components/landing/HeroSection';
-import { TrustStrip } from '@/components/landing/TrustStrip';
-import { StatsRow } from '@/components/landing/StatsRow';
-import { BentoFeatures } from '@/components/landing/BentoFeatures';
-import { ShowcaseSection } from '@/components/landing/ShowcaseSection';
-import { HowItWorksSteps } from '@/components/landing/HowItWorksSteps';
-import { TestimonialsMarquee } from '@/components/landing/TestimonialsMarquee';
-import { FaqAccordion } from '@/components/landing/FaqAccordion';
+import { RealProductHero } from '@/components/landing/RealProductHero';
+import { RealHowItWorks } from '@/components/landing/RealHowItWorks';
+import { RealProductFeatures } from '@/components/landing/RealProductFeatures';
 import { FinalCta } from '@/components/landing/FinalCta';
 import { Footer } from '@/components/landing/Footer';
-import { landingData } from '@/components/landing/landingData';
 
 export const metadata: Metadata = {
-  title: landingData.meta.title,
-  description: landingData.meta.description,
+  title: 'FixNet — Property Management & 24/7 AI Voice Dispatch',
+  description: 'Manage your entire property portfolio with real-time software. 24/7 automated emergency phone dispatch, repair work orders, and digital lease renewals.',
   openGraph: {
-    title: landingData.meta.title,
-    description: landingData.meta.description,
+    title: 'FixNet — Property Management & 24/7 AI Voice Dispatch',
+    description: 'Manage your entire property portfolio with real-time software. 24/7 automated emergency phone dispatch, repair work orders, and digital lease renewals.',
     type: 'website',
   },
 };
@@ -25,40 +19,24 @@ export const metadata: Metadata = {
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#f5f5f7] text-[#232533] selection:bg-[#081b45] selection:text-white font-sans antialiased overflow-x-hidden">
-      {/* 1. Sticky Navbar */}
+      {/* 1. Header / Navbar */}
       <FloatingNavbar />
 
-      {/* Main Content Layout */}
       <main className="relative z-10">
-        {/* 2. Hero Section with Signature Deepdale Pill Enclosure & Live Call Card */}
-        <HeroSection />
+        {/* 2. Hero: One-line plain English value proposition + Real Dashboard Screenshot */}
+        <RealProductHero />
 
-        {/* 3. Trusted-by Smooth Marquee */}
-        <TrustStrip />
+        {/* 3. How It Works: 3 simple steps with real software screenshots */}
+        <RealHowItWorks />
 
-        {/* 4. Institutional Stats Row */}
-        <StatsRow />
+        {/* 5. Feature Sections: Real screenshots per feature with plain language captions */}
+        <RealProductFeatures />
 
-        {/* 5. Core Capabilities (Signature Deepdale #040611 Obsidian Bento with Inset Rim Glow) */}
-        <BentoFeatures />
-
-        {/* 6. Live Environments Dual Showcase */}
-        <ShowcaseSection />
-
-        {/* 7. How It Works Timeline Steps */}
-        <HowItWorksSteps />
-
-        {/* 8. Operator Testimonials */}
-        <TestimonialsMarquee />
-
-        {/* 9. Accessible FAQ Accordion */}
-        <FaqAccordion />
-
-        {/* 10. High-Contrast Final CTA */}
+        {/* 6. Simple Final CTA */}
         <FinalCta />
       </main>
 
-      {/* 11. Institutional Enterprise Footer */}
+      {/* 7. Footer */}
       <Footer />
     </div>
   );

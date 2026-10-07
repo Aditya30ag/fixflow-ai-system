@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { landingData } from './landingData';
 import { Container } from './Primitives';
-import { Building2, Menu, X, ArrowRight, Wrench } from 'lucide-react';
+import { Menu, X, ArrowRight, Wrench } from 'lucide-react';
+import { FixLogo } from '@/components/FixLogo';
 
 export function FloatingNavbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,9 +36,7 @@ export function FloatingNavbar() {
             className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-black rounded-lg"
             aria-label={`${navigation.brandName} home`}
           >
-            <div className="w-9 h-9 rounded-xl bg-[#081b45] text-white flex items-center justify-center shadow-sm group-hover:bg-[#11131a] transition-colors">
-              <Building2 className="w-5 h-5 text-white" />
-            </div>
+            <FixLogo size={36} className="shrink-0 transition-transform duration-200 group-hover:scale-105" />
             <div className="flex items-baseline gap-1.5">
               <span className="text-[1.35rem] sm:text-[1.55rem] font-extrabold tracking-[-0.03em] text-[#081b45]">
                 {navigation.brandName}

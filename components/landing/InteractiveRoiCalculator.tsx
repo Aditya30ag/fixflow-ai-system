@@ -46,7 +46,7 @@ export function LandingRoiCalculator() {
             Calculate Your Portfolio Cost Reduction
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            See exactly how much staff time and emergency contractor callout fees FixFlow will save you every single year.
+            See exactly how much staff time and emergency contractor callout fees FixNet will save you every single year.
           </p>
         </div>
 
@@ -128,7 +128,7 @@ export function LandingRoiCalculator() {
                 <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0" />
                 <span>
                   Based on anonymized data across 15k+ doors: 58% of common plumbing, electrical, and appliance calls 
-                  are resolved without contractor truck rolls through FixFlow AI guided troubleshooting.
+                  are resolved without contractor truck rolls through FixNet guided troubleshooting.
                 </span>
               </div>
             </div>
@@ -143,7 +143,7 @@ export function LandingRoiCalculator() {
                   {formatCurrency(annualCostSavings)}
                 </div>
                 <span className="text-xs text-emerald-400 font-medium">
-                  +{roiMultiplier}x Net ROI on FixFlow platform fees
+                  +{roiMultiplier}x Net ROI on FixNet platform fees
                 </span>
               </div>
 

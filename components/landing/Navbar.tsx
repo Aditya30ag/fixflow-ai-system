@@ -34,7 +34,7 @@ export function LandingNavbar() {
       <div className="relative z-50 bg-gradient-to-r from-blue-50 via-indigo-50 to-sky-50 border-b border-blue-100 px-4 py-2 text-center text-xs text-blue-900">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-600/10 text-blue-700 font-semibold border border-blue-200 text-[11px]">
-            <Sparkles className="w-3 h-3 text-blue-600" /> FixFlow 2.4 Live
+            <Sparkles className="w-3 h-3 text-blue-600" /> FixNet 2.4 Live
           </span>
           <span className="font-medium text-slate-700">Next-gen autonomous property ops with ElevenLabs & Cartesia voice telephony.</span>
           <Link 
@@ -68,7 +68,7 @@ export function LandingNavbar() {
 
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-slate-900 tracking-tight">FixFlow</span>
+                <span className="text-xl font-bold text-slate-900 tracking-tight">FixNet</span>
                 <span className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
                   AI OS
                 </span>

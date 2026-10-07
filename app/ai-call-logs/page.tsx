@@ -300,7 +300,7 @@ export default function AICallLogsPage() {
                             isAgent ? 'text-blue-800' : 'text-slate-800'
                           }`}
                         >
-                          {isAgent ? `🤖 Fiflow AI (${selectedCall.agentUsed})` : `👤 ${selectedCall.callerName}`}
+                          {isAgent ? `🤖 FixNet AI (${selectedCall.agentUsed})` : `👤 ${selectedCall.callerName}`}
                         </span>
                         <span className="text-[10px] text-slate-400 font-mono">
                           {msg.time}

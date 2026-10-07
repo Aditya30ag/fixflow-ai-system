@@ -53,7 +53,7 @@ export default function AIAgentsPage() {
       name: agent.name,
       role: agent.role,
       voiceType: agent.voiceType,
-      systemInstructions: `You are ${agent.name}, an autonomous property operations specialist for Fiflow. Always verify tenant identity, log detailed action items, and confirm whether issues require urgent technician dispatch.`,
+      systemInstructions: `You are ${agent.name}, an autonomous property operations specialist for FixNet. Always verify tenant identity, log detailed action items, and confirm whether issues require urgent technician dispatch.`,
       escalationThreshold: 'Medium',
       assignedProperties: agent.assignedProperties,
     });

@@ -1,6 +1,6 @@
-# FixFlow AI Design Tokens (Deepdale-Inspired System)
+# FixNet Design Tokens (Deepdale-Inspired System)
 
-These tokens map the calm, institutional, high-trust visual language of Deepdale directly into FixFlow's design system, tailored for property operations directors and asset managers.
+These tokens map the calm, institutional, high-trust visual language of Deepdale directly into FixNet's design system, tailored for property operations directors and asset managers.
 
 ---
 

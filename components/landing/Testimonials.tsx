@@ -6,7 +6,7 @@ import { Star, Quote, Building2, ShieldCheck } from 'lucide-react';
 export function LandingTestimonials() {
   const testimonials = [
     {
-      quote: "FixFlow eliminated 73% of our middle-of-the-night emergency calls. When a burst pipe occurred at 2:30 AM, Elena guided the tenant through shutting off the main valve in 40 seconds, then dispatched our plumber automatically.",
+      quote: "FixNet eliminated 73% of our middle-of-the-night emergency calls. When a burst pipe occurred at 2:30 AM, Elena guided the tenant through shutting off the main valve in 40 seconds, then dispatched our plumber automatically.",
       author: "Rachel Vance",
       title: "VP of Asset Management",
       company: "Apex Residential Holdings (420 Units)",
@@ -14,7 +14,7 @@ export function LandingTestimonials() {
       highlight: "Saved $34,000 in water damage & callouts"
     },
     {
-      quote: "Our maintenance staff was drowning in routine boiler and breaker calls. With FixFlow's step-by-step diagnostic portal, tenants resolve simple issues themselves before we spend $200 on an unnecessary truck roll.",
+      quote: "Our maintenance staff was drowning in routine boiler and breaker calls. With FixNet's step-by-step diagnostic portal, tenants resolve simple issues themselves before we spend $200 on an unnecessary truck roll.",
       author: "David Thorne",
       title: "Director of Property Operations",
       company: "Martin & Co Estates (850 Doors)",

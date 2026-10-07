@@ -376,7 +376,7 @@ function PropertiesContent() {
                       </span>
                     </div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      All units in {selectedPropertyDetail.name} are guarded by Fiflow Autonomous Voice Dispatch.
+                      All units in {selectedPropertyDetail.name} are guarded by FixNet Autonomous Voice Dispatch.
                       Emergency calls are triaged 24/7 with instant contractor dispatch.
                     </p>
                     <div className="pt-2 flex items-center gap-4 text-xs font-semibold text-blue-700">
@@ -457,7 +457,7 @@ function PropertiesContent() {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         title="Add New Property"
-        description="Register a building into the Fiflow autonomous management system."
+        description="Register a building into the FixNet autonomous management system."
       >
         <form onSubmit={handleAddProperty} className="space-y-4 text-xs">
           <div>
