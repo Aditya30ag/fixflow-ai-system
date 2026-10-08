@@ -1,156 +1,221 @@
-import React from 'react';
-import { landingData } from './landingData';
-import { Container, SectionHeader, Button } from './Primitives';
-import { ArrowRight, CheckCircle2, Headphones, Smartphone, LayoutDashboard } from 'lucide-react';
+'use client';
+
+import React, { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import gsap from 'gsap';
+import { Container } from './Primitives';
+import { ArrowRight, Eye } from 'lucide-react';
+
+interface DeckCard {
+  title: string;
+  category: string;
+  description: string;
+  screen: string;
+  webp: string;
+  alt: string;
+  href: string;
+  rotateZ: number;
+  badge: string;
+}
+
+const deckCards: DeckCard[] = [
+  {
+    title: 'Executive Portfolio & Property Map',
+    category: 'PROPERTIES',
+    description: 'Multi-family buildings, live rent rolls, occupancy counts, and location maps in one executive view.',
+    screen: '/screens/properties.png',
+    webp: '/screens/properties.webp',
+    alt: 'FixNet Properties overview interface',
+    href: '/properties',
+    rotateZ: -5,
+    badge: 'Rent Roll',
+  },
+  {
+    title: 'Real-Time Telephony & Operations Hub',
+    category: 'CENTRAL OS',
+    description: 'Live operations hub monitoring 24/7 call dispatching, income velocity, and work order workflows.',
+    screen: '/screens/dashboard.png',
+    webp: '/screens/dashboard.webp',
+    alt: 'FixNet Main Dashboard interface',
+    href: '/dashboard',
+    rotateZ: 0,
+    badge: 'Live Software',
+  },
+  {
+    title: 'Autonomous Dispatch & Work Orders',
+    category: 'AI VOICE',
+    description: 'Every resident call transcript, diagnostic summary, and automated contractor arrival confirmation.',
+    screen: '/screens/ai_dispatch.png',
+    webp: '/screens/ai_dispatch.webp',
+    alt: 'FixNet AI Voice Dispatch and call logs interface',
+    href: '/ai-call-logs',
+    rotateZ: 5,
+    badge: 'Sub-400ms SLA',
+  },
+];
 
 export function ShowcaseSection() {
-  const { showcase } = landingData;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const deckRef = useRef<HTMLDivElement>(null);
+  const [activeHoverCard, setActiveHoverCard] = useState<number | null>(null);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+
+    if (prefersReducedMotion || !isDesktop || !deckRef.current) return;
+
+    const deck = deckRef.current;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = deck.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      gsap.to(deck, {
+        rotateY: x * 10,
+        rotateX: -y * 10,
+        duration: 0.35,
+        ease: 'power1.out',
+      });
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(deck, {
+        rotateY: 0,
+        rotateX: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+      });
+    };
+
+    deck.addEventListener('mousemove', handleMouseMove);
+    deck.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      deck.removeEventListener('mousemove', handleMouseMove);
+      deck.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
 
   return (
-    <section id="showcase" className="py-24 lg:py-32 bg-[#f5f5f7] border-t border-[#d8dde7]">
+    <section id="showcase" className="py-20 lg:py-28 bg-[#f5f5f7] border-t border-[#d8dde7] relative overflow-hidden">
       <Container size="default">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <SectionHeader
-            eyebrow={showcase.sectionTag}
-            title={showcase.heading}
-            subtitle={showcase.subheading}
-            align="left"
-            className="mb-0"
-          />
-
-          <div className="hidden md:flex items-center gap-2 text-xs font-mono font-semibold text-[#6b7386] bg-white px-3.5 py-1.5 rounded-full border border-[#d8dde7] shadow-sm">
-            <span>LIVE INTERFACES</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e]" />
-            <span>FULLY FUNCTIONAL</span>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 lg:mb-18">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f0f4fd] border border-[#d4e1fb] text-[#081b45] text-xs font-mono font-bold uppercase tracking-wider mb-3">
+            <span>[ 04 // 3D SOFTWARE DECK ]</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0b0d12] tracking-tight leading-tight">
+            High-density interfaces dealt for speed
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-[#404555] max-w-2xl mx-auto leading-relaxed">
+            Hover over any interface card in the dealt deck to tilt in 3D perspective and inspect full software workflows.
+          </p>
         </div>
 
-        {/* Project Showcase Cards */}
-        <div className="space-y-8">
-          {showcase.projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="rounded-3xl p-7 sm:p-10 bg-white border border-[#d8dde7] shadow-[0_10px_30px_rgba(18,24,35,0.04)] hover:shadow-[0_20px_45px_rgba(18,24,35,0.08)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* Text & Specs Details (5 cols) */}
-                <div className="lg:col-span-5 space-y-6">
-                  <div>
-                    <span className="text-[11px] font-mono uppercase font-bold tracking-wider text-[#081b45]">
-                      {project.tag}
+        {/* Well-proportioned 3D Dealt Deck Arena */}
+        <div
+          ref={containerRef}
+          style={{ perspective: '1400px' }}
+          className="relative w-full max-w-5xl mx-auto py-6 sm:py-8"
+        >
+          <div
+            ref={deckRef}
+            style={{ transformStyle: 'preserve-3d' }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 will-change-transform"
+          >
+            {deckCards.map((card, index) => {
+              const isCenter = index === 1;
+              const isHovered = activeHoverCard === index;
+
+              return (
+                <div
+                  key={card.title}
+                  onMouseEnter={() => setActiveHoverCard(index)}
+                  onMouseLeave={() => setActiveHoverCard(null)}
+                  style={{
+                    transform: `rotateZ(${card.rotateZ}deg) translateY(${isCenter ? '-12px' : '8px'})`,
+                    transformStyle: 'preserve-3d',
+                  }}
+                  className={`group relative rounded-2xl sm:rounded-3xl bg-white border border-[#d8dde7] p-4.5 sm:p-5 shadow-[0_16px_38px_rgba(18,24,35,0.08)] transition-all duration-300 hover:z-30 hover:shadow-[0_24px_50px_rgba(18,24,35,0.14)] hover:scale-[1.03] ${
+                    isHovered ? 'z-30' : isCenter ? 'z-20' : 'z-10'
+                  }`}
+                >
+                  {/* Top Meta Bar */}
+                  <div className="flex items-center justify-between gap-2 mb-3.5">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#081b45] bg-[#eef1f6] px-2.5 py-0.5 rounded border border-[#d8dde7] shrink-0 whitespace-nowrap">
+                      {card.category}
                     </span>
-                    <h3 className="mt-2 text-2xl sm:text-3xl font-extrabold text-[#0b0d12] tracking-tight leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="mt-3 text-sm sm:text-[15px] text-[#404555] leading-relaxed">
-                      {project.description}
-                    </p>
+
+                    <span className="text-[10px] font-mono font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1 shrink-0 whitespace-nowrap">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      {card.badge}
+                    </span>
                   </div>
 
-                  {/* Highlights list */}
-                  <div className="space-y-2 pt-2 border-t border-[#eaedf3]">
-                    {project.highlights.map((h, i) => (
-                      <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-[#1c202b]">
-                        <CheckCircle2 className="w-4 h-4 text-[#22c55e] shrink-0" />
-                        <span>{h}</span>
+                  {/* Browser Window Frame with Screenshot */}
+                  <div className="rounded-xl border border-[#d8dde7] bg-[#f8f9fb] shadow-2xs overflow-hidden p-2 mb-3.5">
+                    {/* Browser Pill Header */}
+                    <div className="px-2.5 py-1.5 bg-[#edf0f5] rounded-t-lg border-b border-[#e2e6ed] flex items-center justify-between mb-1.5 text-xs text-[#6b7386]">
+                      <div className="flex items-center gap-1">
+                        <div className="w-2 h-2 rounded-full bg-[#ef4646]" />
+                        <div className="w-2 h-2 rounded-full bg-[#f59e0b]" />
+                        <div className="w-2 h-2 rounded-full bg-[#22c55e]" />
                       </div>
-                    ))}
-                  </div>
-
-                  {/* CTA link */}
-                  <div className="pt-2">
-                    <Button href={project.href} variant="primary" size="md">
-                      <span>{project.buttonLabel}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Visual Preview Window (7 cols) */}
-                <div className="lg:col-span-7">
-                  <div className="rounded-2xl border border-[#d8dde7] bg-[#f8f9fb] p-5 sm:p-6 shadow-sm overflow-hidden">
-                    {/* Header bar */}
-                    <div className="flex items-center justify-between pb-3.5 border-b border-[#eaedf3] text-xs font-mono text-[#6b7386]">
-                      <div className="flex items-center gap-2">
-                        {index === 0 && <LayoutDashboard className="w-4 h-4 text-[#081b45]" />}
-                        {index === 1 && <Smartphone className="w-4 h-4 text-[#081b45]" />}
-                        {index === 2 && <Headphones className="w-4 h-4 text-[#081b45]" />}
-                        <span className="font-semibold text-[#1a2232]">{project.stats}</span>
-                      </div>
-                      <span className="text-[#22c55e] font-semibold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" />
-                        Connected
-                      </span>
+                      <span className="text-[9px] font-mono text-[#4b5563]">1080p Live</span>
                     </div>
 
-                    {/* Preview UI Mock Details */}
-                    {index === 0 && (
-                      <div className="pt-5 space-y-3.5 text-xs">
-                        <div className="grid grid-cols-3 gap-3">
-                          <div className="p-3.5 rounded-xl bg-white border border-[#d8dde7] shadow-sm">
-                            <span className="text-[10px] font-mono text-[#6b7386] font-bold">MONTHLY NOI</span>
-                            <p className="font-extrabold text-lg text-[#0b0d12] mt-1">$198,900</p>
-                          </div>
-                          <div className="p-3.5 rounded-xl bg-white border border-[#d8dde7] shadow-sm">
-                            <span className="text-[10px] font-mono text-[#6b7386] font-bold">OCCUPANCY</span>
-                            <p className="font-extrabold text-lg text-[#22c55e] mt-1">98.2%</p>
-                          </div>
-                          <div className="p-3.5 rounded-xl bg-white border border-[#d8dde7] shadow-sm">
-                            <span className="text-[10px] font-mono text-[#6b7386] font-bold">ACTIVE TICKETS</span>
-                            <p className="font-extrabold text-lg text-[#081b45] mt-1">3 Pending</p>
-                          </div>
-                        </div>
+                    {/* Screenshot Canvas */}
+                    <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden border border-[#eaedf3] bg-white">
+                      <picture>
+                        <source srcSet={card.webp} type="image/webp" />
+                        <Image
+                          src={card.screen}
+                          alt={card.alt}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          loading="lazy"
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                      </picture>
 
-                        <div className="p-3.5 rounded-xl bg-white border border-[#d8dde7] flex items-center justify-between shadow-sm">
-                          <span className="text-[#1c202b] text-[12px] font-medium">Autonomous Voice Telephony Line: Active</span>
-                          <span className="font-mono text-[#22c55e] text-[12px] font-bold">0 Missed Calls</span>
+                      {/* Hover Overlay Button */}
+                      <div className="absolute inset-0 bg-[#081b45]/0 group-hover:bg-[#081b45]/15 transition-colors flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 backdrop-blur-xs px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#081b45] flex items-center gap-1.5 shadow-md border border-[#d8dde7]">
+                          <Eye className="w-3.5 h-3.5" />
+                          <span>Inspect</span>
                         </div>
                       </div>
-                    )}
+                    </div>
+                  </div>
 
-                    {index === 1 && (
-                      <div className="pt-5 space-y-3.5 text-xs">
-                        <div className="p-4 rounded-xl bg-white border border-[#d8dde7] shadow-sm">
-                          <p className="text-[11px] font-mono font-bold text-[#081b45]">Martin &amp; Co Public Portal</p>
-                          <p className="text-[#1c202b] font-semibold text-sm mt-1">&quot;What can we help you resolve today?&quot;</p>
-                        </div>
-                        <div className="grid grid-cols-3 gap-2.5 text-xs font-semibold">
-                          <div className="p-3 rounded-xl bg-white border border-[#d8dde7] text-[#1c202b] text-center shadow-sm">
-                            Plumbing
-                          </div>
-                          <div className="p-3 rounded-xl bg-white border border-[#d8dde7] text-[#1c202b] text-center shadow-sm">
-                            Heating / AC
-                          </div>
-                          <div className="p-3 rounded-xl bg-white border border-[#d8dde7] text-[#1c202b] text-center shadow-sm">
-                            Electrical
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                  {/* Content & Direct Action Link */}
+                  <div className="space-y-1.5">
+                    <h3 className="font-extrabold text-base text-[#0b0d12] tracking-tight leading-snug">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs text-[#404555] leading-relaxed line-clamp-2">
+                      {card.description}
+                    </p>
 
-                    {index === 2 && (
-                      <div className="pt-5 space-y-3.5 text-xs">
-                        <div className="p-4 rounded-xl bg-white border border-[#d8dde7] space-y-2 shadow-sm">
-                          <div className="flex items-center justify-between">
-                            <span className="text-[12px] font-mono font-bold text-[#081b45]">Agent: Elena (Maintenance Dispatch)</span>
-                            <span className="text-[11px] font-mono text-[#6b7386]">Duration: 02:18</span>
-                          </div>
-                          <p className="text-[#404555] text-xs italic">
-                            &quot;Verified tenant water shutoff under bathroom vanity. Paged certified contractor #18.&quot;
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2 text-[11px] font-mono text-[#6b7386]">
-                          <span className="px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">Sentiment: Calm</span>
-                          <span className="px-2.5 py-1 rounded-md bg-white border border-[#d8dde7]">Audio WAV Synced</span>
-                        </div>
-                      </div>
-                    )}
+                    <div className="pt-2.5 flex items-center justify-between border-t border-[#eaedf3]">
+                      <Link
+                        href={card.href}
+                        className="inline-flex items-center gap-1 text-xs font-bold text-[#081b45] hover:text-[#18aae3] transition-colors"
+                      >
+                        <span>Open Screen</span>
+                        <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                      </Link>
+
+                      <span className="text-[10px] font-mono text-[#6b7386]">Live OS</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </Container>
     </section>
